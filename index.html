@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Photonkeeper — archive your DWARF 3 sessions, byte for byte</title>
+<meta name="description" content="A Mac app that moves imaging sessions off a DWARF 3 into a checksummed archive, and puts them back byte-identical so the telescope can still megastack them.">
+<link rel="canonical" href="https://photonkeeper.chryse.co.uk/">
+<meta property="og:title" content="Photonkeeper — archive your DWARF 3 sessions, byte for byte">
+<meta property="og:description" content="Import, verify and restore DWARF 3 imaging sessions on macOS, with every file checksummed and a dry run before anything happens.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://photonkeeper.chryse.co.uk/">
+<meta property="og:image" content="https://photonkeeper.chryse.co.uk/shots/sessions.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Photonkeeper — archive your DWARF 3 sessions, byte for byte">
+<meta name="twitter:description" content="Import, verify and restore DWARF 3 imaging sessions on macOS, every file checksummed.">
+<meta name="twitter:image" content="https://photonkeeper.chryse.co.uk/shots/sessions.png">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "Photonkeeper",
+  "url": "https://photonkeeper.chryse.co.uk/",
+  "description": "A macOS app that moves imaging sessions between a DWARF 3 smart telescope and a local archive, byte-identically, with SHA-256 verification.",
+  "applicationCategory": "UtilitiesApplication",
+  "operatingSystem": "macOS 14 or later",
+  "softwareVersion": "1.1"
+}
+</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600&family=Space+Mono:wght@400;700&family=Work+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --sky:        #0B1020;
+    --sky-soft:   #141B31;
+    --panel:      #1A2238;
+    --ink:        #EAEEF7;
+    --ink-soft:   #9AA6C0;
+    --star:       #E0B24C;
+    --glow:       #6FA8FF;
+    --line:       rgba(234,238,247,0.12);
+  }
+  @media (prefers-color-scheme: light) {
+    :root {
+      --sky:      #F7F8FB;
+      --sky-soft: #EDEFF6;
+      --panel:    #FFFFFF;
+      --ink:      #161B28;
+      --ink-soft: #5B6478;
+      --star:     #A8790B;
+      --glow:     #2C5FD0;
+      --line:     rgba(22,27,40,0.12);
+    }
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    background: var(--sky);
+    color: var(--ink);
+    font-family: 'Work Sans', -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
+    line-height: 1.65;
+    -webkit-font-smoothing: antialiased;
+  }
+  .wrap { max-width: 860px; margin: 0 auto; padding: 0 24px; }
+  header { padding: 72px 0 40px; text-align: center; }
+  h1 {
+    font-family: 'Fraunces', Georgia, serif;
+    font-weight: 600;
+    font-size: clamp(2.4rem, 6vw, 3.6rem);
+    margin: 0 0 12px;
+    letter-spacing: -0.02em;
+  }
+  .tagline { font-size: clamp(1.05rem, 2.4vw, 1.25rem); color: var(--ink-soft); margin: 0 auto; max-width: 34em; }
+  h2 {
+    font-family: 'Fraunces', Georgia, serif;
+    font-weight: 600;
+    font-size: 1.5rem;
+    margin: 56px 0 16px;
+  }
+  a { color: var(--glow); }
+  .cta { text-align: center; margin: 36px 0 8px; }
+  .button {
+    display: inline-block;
+    background: var(--glow);
+    color: #fff;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 1.05rem;
+    padding: 14px 32px;
+    border-radius: 10px;
+  }
+  .button:hover { filter: brightness(1.08); }
+  .meta { color: var(--ink-soft); font-size: 0.9rem; margin-top: 12px; }
+  .panel {
+    background: var(--panel);
+    border: 1px solid var(--line);
+    border-radius: 12px;
+    padding: 20px 24px;
+    margin: 24px 0;
+  }
+  ul { padding-left: 1.1em; }
+  li { margin: 10px 0; }
+  figure { margin: 28px 0; }
+  figure img {
+    width: 100%;
+    height: auto;
+    display: block;
+    border: 1px solid var(--line);
+    border-radius: 10px;
+  }
+  figcaption { color: var(--ink-soft); font-size: 0.92rem; margin-top: 10px; text-align: center; }
+  code, .mono { font-family: 'Space Mono', ui-monospace, Menlo, monospace; font-size: 0.86rem; }
+  .checksum { word-break: break-all; color: var(--ink-soft); }
+  footer {
+    border-top: 1px solid var(--line);
+    margin-top: 64px;
+    padding: 28px 0 56px;
+    color: var(--ink-soft);
+    font-size: 0.9rem;
+    text-align: center;
+  }
+  .note { border-left: 3px solid var(--star); padding-left: 16px; margin: 24px 0; }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header>
+  <h1>Photonkeeper</h1>
+  <p class="tagline">Gets imaging sessions off a DWARF&nbsp;3 and into a proper archive on your own drive — and puts them back <strong>byte for byte identical</strong>, so the telescope can still megastack and restack them.</p>
+  <div class="cta">
+    <a class="button" href="Photonkeeper-1.1.zip" download>Download for macOS</a>
+    <div class="meta">Version 1.1 · 1.1&nbsp;MB · macOS 14 or later · Apple notarised</div>
+  </div>
+</header>
+
+<div class="note">
+  <strong>Looking for testers.</strong> This is an early build and I'd like a few DWARF&nbsp;3 owners to try it on real data. What I mainly want to know: does it spot your telescope, does the round trip survive your sessions, and does anything about it confuse you.
+</div>
+
+<h2>What it does</h2>
+<ul>
+  <li>Imports everything new off the telescope, SHA-256 checksumming each file <em>as</em> it copies rather than in a second pass.</li>
+  <li>Sends sessions back to the scope — filtered by target, date, exposure or gain — hashing on the way out and reading back to confirm.</li>
+  <li>Frees onboard storage, but only for sessions it has just verified against your archive.</li>
+  <li>Files <code>M 42</code>, <code>M42</code> and <code>NGC 1976</code> as one target instead of three folders.</li>
+  <li>Re-checks the whole archive for bit-rot later, remembers what it found, and can fetch damaged files back off the telescope.</li>
+  <li>Every operation has a dry run that shows exactly what would happen first.</li>
+</ul>
+
+<p>Session folders are never renamed and nothing inside one is ever altered — all the organising happens in the directories above them.</p>
+
+<h2>Try it without a telescope</h2>
+<p>There's a demo mode with sample data and a separate sample archive, so you can watch the whole round trip work before pointing it anywhere near your own sessions. Telescope → Try Demo Mode.</p>
+
+<h2>Screenshots</h2>
+
+<figure>
+  <img src="shots/sessions.png" alt="A target's sessions listed with dates, exposures, sub counts, sizes and a green verified column.">
+  <figcaption>Sessions grouped under one target, with every one checksum-verified against the archive.</figcaption>
+</figure>
+
+<figure>
+  <img src="shots/dry-run.png" alt="A dry run listing every file that would be copied, with sizes, before anything happens.">
+  <figcaption>Every operation can be dry-run first. This is the whole list, before a single byte moves.</figcaption>
+</figure>
+
+<figure>
+  <img src="shots/targets.png" alt="The archive sidebar listing targets with session counts and total integration time.">
+  <figcaption>Your archive by target, with session counts and total integration time.</figcaption>
+</figure>
+
+<h2>Installing it</h2>
+<p>Unzip it and drag <strong>Photonkeeper</strong> to your Applications folder. The first time you open it macOS will ask:</p>
+<div class="panel">
+  “Photonkeeper is an app downloaded from the Internet. Are you sure you want to open it?”
+</div>
+<p>Click <strong>Open</strong>. That's the normal prompt for any downloaded app — Photonkeeper is signed with an Apple Developer ID and notarised by Apple, so you get a single click rather than the block macOS shows for unsigned software.</p>
+
+<h2>Checking what you downloaded</h2>
+<p>For an app whose whole job is checksumming your data, here's a checksum of itself. Run this on the downloaded file:</p>
+<div class="panel">
+  <div class="mono">shasum -a 256 Photonkeeper-1.1.zip</div>
+</div>
+<p class="mono checksum">9ded2c7389a89b18e109204c4161937efa91a080dfe9e7fc2d4603ea64712081</p>
+
+<h2>Requirements</h2>
+<ul>
+  <li>macOS 14 (Sonoma) or later, Apple silicon or Intel.</li>
+  <li>A DWARF 3, connected over USB.</li>
+  <li>Somewhere to keep the archive — an external drive is fine, and it's remembered even if you move or rename the folder.</li>
+</ul>
+
+<footer>
+  <p>Photonkeeper is an independent project and is not affiliated with, endorsed by, or connected to DwarfLab.<br>
+  DWARF is a trademark of its respective owner.</p>
+</footer>
+
+</div>
+</body>
+</html>
