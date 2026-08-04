@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Photonkeeper — archive your DWARF 3 sessions, byte for byte</title>
-<meta name="description" content="A Mac app that moves imaging sessions off a DWARF 3 into a checksummed archive, and puts them back byte-identical so the telescope can still megastack them.">
+<meta name="description" content="A Mac app that moves imaging sessions off a DWARF 3 into a checksummed archive, and puts them back byte-identical so the telescope can still megastack them. Testers wanted, DWARF Mini owners too.">
 <link rel="canonical" href="https://photonkeeper.chryse.co.uk/">
 <meta property="og:title" content="Photonkeeper — archive your DWARF 3 sessions, byte for byte">
 <meta property="og:description" content="Import, verify and restore DWARF 3 imaging sessions on macOS, with every file checksummed and a dry run before anything happens.">
@@ -136,7 +136,9 @@
 </header>
 
 <div class="note">
-  <strong>Looking for testers.</strong> This is an early build and I'd like a few DWARF&nbsp;3 owners to try it on real data. What I mainly want to know: does it spot your telescope, does the round trip survive your sessions, and does anything about it confuse you.
+  <strong>Looking for testers.</strong> This is an early build and I'd like a few DWARF&nbsp;3 owners to try it on real data. What I mainly want to know: does it spot your telescope, does the round trip survive your sessions, and does anything about it confuse you. Tell me at <a href="mailto:support@chryse.co.uk">support@chryse.co.uk</a> — screenshots welcome.
+  <br><br>
+  Got a <strong>DWARF&nbsp;Mini</strong> instead? It isn't supported yet, but <a href="#mini">you can help me find out what it would take</a>.
 </div>
 
 <h2>What it does</h2>
@@ -192,7 +194,30 @@
   <li>Somewhere to keep the archive — an external drive is fine, and it's remembered even if you move or rename the folder.</li>
 </ul>
 
+<h2 id="mini">Got a DWARF Mini?</h2>
+<p>Photonkeeper is built and tested against a DWARF&nbsp;3. Whether it would work with a Mini comes down to a few things I can't answer without one in front of me: whether it mounts as a normal disk when you plug it in, whether its files sit in an <code>Astronomy</code> folder, and what its session folders are called.</p>
+
+<p>If you have a Mini and five spare minutes, this would settle it. Connect the Mini over USB, open <strong>Terminal</strong> (Applications → Utilities), and paste this:</p>
+
+<div class="panel">
+  <div class="mono">curl -sL https://photonkeeper.chryse.co.uk/mini-check.sh | bash</div>
+</div>
+
+<p>It is read-only. It lists what's mounted, looks for an <code>Astronomy</code> folder, prints the names of one session's files, and asks macOS what the device calls itself. It never opens, copies, moves, renames or deletes anything on the telescope. If you'd rather read it before running it — a sound instinct with any command a stranger gives you — this downloads it and opens it in TextEdit first:</p>
+
+<div class="panel">
+  <div class="mono">curl -sL https://photonkeeper.chryse.co.uk/mini-check.sh -o mini-check.sh &amp;&amp; open -e mini-check.sh</div>
+</div>
+
+<p>Then run <code>bash mini-check.sh</code> once you're happy with it.</p>
+
+<p>Copy everything it prints and send it to <a href="mailto:support@chryse.co.uk?subject=DWARF%20Mini%20check">support@chryse.co.uk</a>. A screenshot of the Terminal window works just as well. That output tells me whether Mini support is a small change or a different app.</p>
+
+<h2>Get in touch</h2>
+<p>Bugs, confusion, feature requests, or a Mini report: <a href="mailto:support@chryse.co.uk">support@chryse.co.uk</a>. If something went wrong, the Activity pane inside the app has a log — a screenshot of that is the single most useful thing you can send.</p>
+
 <footer>
+  <p><a href="mailto:support@chryse.co.uk">support@chryse.co.uk</a></p>
   <p>Photonkeeper is an independent project and is not affiliated with, endorsed by, or connected to DwarfLab.<br>
   DWARF is a trademark of its respective owner.</p>
 </footer>
