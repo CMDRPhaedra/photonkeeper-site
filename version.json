@@ -1,6 +1,6 @@
 {
-  "version": "1.9",
-  "build": 99,
+  "version": "1.2",
+  "build": 3,
   "url": "https://photonkeeper.chryse.co.uk/",
-  "notes": "Temporary test entry — will be reverted."
+  "notes": "Dry runs now show their result, and the sidebar no longer strands itself when the archive changes."
 }
