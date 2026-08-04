@@ -1,6 +1,6 @@
 {
-  "version": "1.2",
-  "build": 3,
+  "version": "1.3",
+  "build": 4,
   "url": "https://photonkeeper.chryse.co.uk/",
-  "notes": "Dry runs now show their result, and the sidebar no longer strands itself when the archive changes."
+  "notes": "Photonkeeper now tells you when a newer version is available."
 }
