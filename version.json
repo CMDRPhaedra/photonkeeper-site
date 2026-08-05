@@ -1,6 +1,6 @@
 {
-  "version": "1.4",
-  "build": 5,
+  "version": "1.5",
+  "build": 6,
   "url": "https://photonkeeper.chryse.co.uk/",
-  "notes": "Demo mode is now offered on the Telescope screen, not just in the menu."
+  "notes": "Sessions now record which telescope captured them, and sending one back to a different model is refused."
 }
