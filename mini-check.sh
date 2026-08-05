@@ -42,6 +42,39 @@ for vol in /Volumes/*; do
       echo "(no session folders found at that level)"
     fi
     echo
+
+    # The part that actually answers the question. Nothing the telescope says
+    # over USB distinguishes one DWARF from another - the strings in sections 3
+    # and 4 are the vendor's and the Linux storage gadget's, shared across the
+    # range - but the firmware writes its own model name into every frame.
+    #
+    # A FITS header is 80-column ASCII cards in 2880-byte blocks ending at END,
+    # so this reads 5,760 bytes and decodes no image data whatsoever.
+    echo "--- what one frame's header says (the important bit) ---"
+    fits=$(find "$vol/Astronomy" -type f \( -iname '*.fits' -o -iname '*.fit' \) 2>/dev/null | head -1)
+    if [ -n "$fits" ]; then
+      echo "file: ${fits#"$vol"/}"
+      head -c 5760 "$fits" 2>/dev/null \
+        | LC_ALL=C fold -w 80 | sed 's/ *$//' | grep -v '^$' | head -40
+    else
+      echo "(no FITS files found on the volume)"
+    fi
+    echo
+
+    # One line per session folder, because a single sample is not
+    # representative: a DWARF 3 measured across its own firmware history writes
+    # DWARFIII, DWARF III and DWARF 3 at different dates, all on one telescope.
+    # If the Mini has done the same we need to see the whole spread, not
+    # whichever frame happened to sort first.
+    echo "--- model name per session, to catch firmware changing its spelling ---"
+    find "$vol/Astronomy" -mindepth 1 -maxdepth 2 -type d 2>/dev/null | head -25 | while read -r dir; do
+      f=$(find "$dir" -maxdepth 1 -type f \( -iname '*.fits' -o -iname '*.fit' \) 2>/dev/null | head -1)
+      [ -z "$f" ] && continue
+      ident=$(head -c 5760 "$f" 2>/dev/null | LC_ALL=C fold -w 80 \
+              | grep -E '^(TELESCOP|INSTRUME|FIRMWARE)' | sed 's/ *$//' | tr '\n' ' ')
+      [ -n "$ident" ] && echo "  ${dir#"$vol/Astronomy/"}: $ident"
+    done
+    echo
   fi
 done
 [ "$found" -eq 0 ] && echo "No mounted volume has an Astronomy folder."
