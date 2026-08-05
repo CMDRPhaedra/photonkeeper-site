@@ -1,6 +1,6 @@
 {
-  "version": "1.5",
-  "build": 6,
+  "version": "1.6",
+  "build": 7,
   "url": "https://photonkeeper.chryse.co.uk/",
-  "notes": "Sessions now record which telescope captured them, and sending one back to a different model is refused."
+  "notes": "Import over Wi-Fi with the telescope on your network. Sending sessions back still needs the USB cable."
 }
