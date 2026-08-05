@@ -1,6 +1,6 @@
 {
-  "version": "1.6.1",
-  "build": 8,
+  "version": "1.7",
+  "build": 9,
   "url": "https://photonkeeper.chryse.co.uk/",
-  "notes": "Same as 1.6 — importing over Wi-Fi — with a build fix so the source compiles on older toolchains."
+  "notes": "Import over Wi-Fi with the telescope on your network. Sending sessions back still needs the USB cable."
 }
