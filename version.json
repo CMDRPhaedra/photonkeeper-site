@@ -1,6 +1,6 @@
 {
-  "version": "1.7",
-  "build": 9,
+  "version": "1.8",
+  "build": 10,
   "url": "https://photonkeeper.chryse.co.uk/",
-  "notes": "Import over Wi-Fi with the telescope on your network. Sending sessions back still needs the USB cable."
+  "notes": "A statistics window, and a way to bring in sessions you copied off the telescope by hand."
 }
