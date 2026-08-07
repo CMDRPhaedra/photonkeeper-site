@@ -1,6 +1,6 @@
 {
-  "version": "1.8",
-  "build": 10,
+  "version": "1.9",
+  "build": 13,
   "url": "https://photonkeeper.chryse.co.uk/",
-  "notes": "A statistics window, and a way to bring in sessions you copied off the telescope by hand."
+  "notes": "Delete sessions from the archive, via the Trash. Show any session in Finder. Import only the sessions you pick."
 }

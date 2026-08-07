@@ -24,7 +24,7 @@
   "description": "A macOS app that moves imaging sessions between a DWARF 3 smart telescope and a local archive, byte-identically, with SHA-256 verification.",
   "applicationCategory": "UtilitiesApplication",
   "operatingSystem": "macOS 14 or later",
-  "softwareVersion": "1.8"
+  "softwareVersion": "1.9"
 }
 </script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -130,8 +130,8 @@
   <h1>Photonkeeper</h1>
   <p class="tagline">Gets imaging sessions off a DWARF&nbsp;3 and into a proper archive on your own drive — and puts them back <strong>byte for byte identical</strong>, so the telescope can still megastack and restack them.</p>
   <div class="cta">
-    <a class="button" href="Photonkeeper-1.8.zip" download>Download for macOS</a>
-    <div class="meta">Version 1.8 · 1.3&nbsp;MB · macOS 14 or later · Apple notarised</div>
+    <a class="button" href="Photonkeeper-1.9.zip" download>Download for macOS</a>
+    <div class="meta">Version 1.9 · 1.4&nbsp;MB · macOS 14 or later · Apple notarised</div>
   </div>
 </header>
 
@@ -148,6 +148,8 @@
   <li>Frees onboard storage, but only for sessions it has just verified against your archive.</li>
   <li>Files <code>M 42</code>, <code>M42</code> and <code>NGC 1976</code> as one target instead of three folders.</li>
   <li>Re-checks the whole archive for bit-rot later, remembers what it found, and can fetch damaged files back off the telescope.</li>
+  <li>Imports a whole card, or just the sessions you pick out of the list.</li>
+  <li>Removes sessions from the archive when you ask — to the Trash, never straight out.</li>
   <li>Every operation has a dry run that shows exactly what would happen first.</li>
 </ul>
 
@@ -183,9 +185,9 @@
 <h2>Checking what you downloaded</h2>
 <p>For an app whose whole job is checksumming your data, here's a checksum of itself. Run this on the downloaded file:</p>
 <div class="panel">
-  <div class="mono">shasum -a 256 Photonkeeper-1.8.zip</div>
+  <div class="mono">shasum -a 256 Photonkeeper-1.9.zip</div>
 </div>
-<p class="mono checksum">fec4da3c251bd9c1ba930222aca363417e4819983719bf90a4c3f06efd3cda48</p>
+<p class="mono checksum">cfc743443deb8802749e698f3afc36561db7c027e38c5102fac7828602c72792</p>
 
 <h2>Requirements</h2>
 <ul>
