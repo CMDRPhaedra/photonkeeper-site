@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Privacy — Photonkeeper</title>
+<meta name="description" content="Photonkeeper's privacy policy. The app collects nothing about you: no analytics, no telemetry, no crash reporting, no account, no tracking of any kind.">
+<link rel="canonical" href="https://photonkeeper.chryse.co.uk/privacy/">
+<meta property="og:title" content="Privacy — Photonkeeper">
+<meta property="og:description" content="Photonkeeper collects nothing about you. No analytics, no telemetry, no crash reporting, no account, no tracking.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://photonkeeper.chryse.co.uk/privacy/">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600&family=Space+Mono:wght@400;700&family=Work+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --sky:        #0B1020;
+    --sky-soft:   #141B31;
+    --panel:      #1A2238;
+    --ink:        #EAEEF7;
+    --ink-soft:   #9AA6C0;
+    --star:       #E0B24C;
+    --glow:       #6FA8FF;
+    --line:       rgba(234,238,247,0.12);
+  }
+  @media (prefers-color-scheme: light) {
+    :root {
+      --sky:      #F7F8FB;
+      --sky-soft: #EDEFF6;
+      --panel:    #FFFFFF;
+      --ink:      #161B28;
+      --ink-soft: #5B6478;
+      --star:     #A8790B;
+      --glow:     #2C5FD0;
+      --line:     rgba(22,27,40,0.12);
+    }
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    background: var(--sky);
+    color: var(--ink);
+    font-family: 'Work Sans', -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
+    line-height: 1.65;
+    -webkit-font-smoothing: antialiased;
+  }
+  .wrap { max-width: 860px; margin: 0 auto; padding: 0 24px; }
+  header { padding: 72px 0 8px; text-align: center; }
+  h1 {
+    font-family: 'Fraunces', Georgia, serif;
+    font-weight: 600;
+    font-size: clamp(2.1rem, 5vw, 3rem);
+    margin: 0 0 12px;
+    letter-spacing: -0.02em;
+  }
+  .tagline { font-size: clamp(1.05rem, 2.4vw, 1.2rem); color: var(--ink-soft); margin: 0 auto; max-width: 34em; }
+  h2 {
+    font-family: 'Fraunces', Georgia, serif;
+    font-weight: 600;
+    font-size: 1.5rem;
+    margin: 56px 0 16px;
+  }
+  h3 {
+    font-family: 'Fraunces', Georgia, serif;
+    font-weight: 600;
+    font-size: 1.15rem;
+    margin: 32px 0 10px;
+  }
+  a { color: var(--glow); }
+  .meta { color: var(--ink-soft); font-size: 0.9rem; margin-top: 12px; }
+  .panel {
+    background: var(--panel);
+    border: 1px solid var(--line);
+    border-radius: 12px;
+    padding: 20px 24px;
+    margin: 24px 0;
+  }
+  ul { padding-left: 1.1em; }
+  li { margin: 10px 0; }
+  code, .mono { font-family: 'Space Mono', ui-monospace, Menlo, monospace; font-size: 0.86rem; }
+  footer {
+    border-top: 1px solid var(--line);
+    margin-top: 64px;
+    padding: 28px 0 56px;
+    color: var(--ink-soft);
+    font-size: 0.9rem;
+    text-align: center;
+  }
+  .note { border-left: 3px solid var(--star); padding-left: 16px; margin: 24px 0; }
+  .back { text-align: center; margin: 8px 0 0; font-size: 0.95rem; }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header>
+  <h1>Privacy</h1>
+  <p class="tagline">Photonkeeper collects nothing about you. This page explains, in detail, what that means and where the data you create actually lives.</p>
+  <p class="back"><a href="/">← Back to Photonkeeper</a></p>
+</header>
+
+<div class="panel">
+  <p><strong>The short version.</strong> There is no analytics, no telemetry, no crash reporting, no advertising, no account to make, no licence to check, and no tracking of any kind. There are no third-party SDKs in the app at all. Nobody, me included, learns what you photograph or when. Your images never leave your control.</p>
+</div>
+
+<h2>Who this is</h2>
+
+<p>Photonkeeper is written and published by Dale Forster, an independent developer in the United Kingdom. Questions about anything on this page go to <a href="mailto:support@chryse.co.uk?subject=Privacy">support@chryse.co.uk</a>, which is a real address a person reads.</p>
+
+<h2>What the app collects</h2>
+
+<p>Nothing. Not a reduced amount, not anonymised or aggregated — none. The app has no code that reports usage, no unique identifier for your installation, no first-run ping, and no mechanism for sending your data anywhere.</p>
+
+<p>Because there is nothing to collect, there is also nothing to sell, share, rent or hand to a third party, and nothing to hand over in response to a request. That is a property of how the app is built rather than a promise about how it is operated.</p>
+
+<h2>Network connections the app makes</h2>
+
+<p>This is the complete list, and it differs slightly depending on where you got the app.</p>
+
+<h3>The App Store version</h3>
+
+<p><strong>One kind of connection: your own telescope, on your own network.</strong></p>
+
+<ul>
+  <li><strong>Over USB</strong> it is not a network connection at all — the DWARF mounts as a disk, and the app reads and writes files on it like any other volume.</li>
+  <li><strong>Over Wi-Fi</strong> the app speaks FTP and HTTP to the address <em>you</em> type in, on your own network. Outbound only: the app never listens for incoming connections, never discovers or scans devices, and nothing about this route leaves your house.</li>
+</ul>
+
+<p>The App Store build makes no other outbound connection of any kind. The version check described below is not merely switched off in that build — it is removed at compile time, so the binary does not even contain the address.</p>
+
+<h3>The version released directly from this site</h3>
+
+<p>Everything above, plus one more, because a directly downloaded app has no store to update it:</p>
+
+<ul>
+  <li><strong>The version check.</strong> Once a day the app asks this website for <code>version.json</code>, a small file naming the current release, and compares it with itself. It sends nothing about you, your Mac or your archive — the request discloses what every web request discloses, an IP address and the fact that a request happened. It downloads no code and installs nothing; if something newer exists, the app shows a banner and you decide what to do. Turn it off in <strong>Settings → Check for updates</strong> and the app makes no outbound connection at all beyond your own telescope.</li>
+</ul>
+
+<h2>Where your data lives</h2>
+
+<p>On your Mac, in places you can see:</p>
+
+<ul>
+  <li><strong>Your archive</strong> — the imaging sessions themselves, in the folder you chose, in ordinary directories you can open in Finder. Session folders are never renamed and their contents are never altered.</li>
+  <li><strong>Per-session manifests</strong> — a list of every file with its SHA-256 checksum, written alongside each session in the archive. This is what makes verification and byte-identical restores possible.</li>
+  <li><strong>The catalog</strong> — an index of the archive, kept in Application Support. It is derived data: delete it and the app rebuilds it from the manifests.</li>
+  <li><strong>A handful of small settings</strong> — where your archive is, which telescopes you have granted access to, the last Wi-Fi address you used, your appearance choice, and when the version check last ran.</li>
+  <li><strong>The Activity log</strong> — held in memory only, and gone when you quit.</li>
+</ul>
+
+<p>None of it is transmitted anywhere. There is no cloud component, no sync service and no backup service in this app. If you want your archive backed up or on a NAS, that is your own storage under your own arrangements, and the app is happy to live there.</p>
+
+<h2>What the sandbox allows</h2>
+
+<p>The App Store version runs inside the macOS App Sandbox. It can read and write the archive folder you picked and a telescope volume you have specifically granted through an open panel, and nothing else on your disk. Those grants are remembered so you are not asked repeatedly, and you can withdraw them in System Settings.</p>
+
+<p>The app asks for no access to your Photos library, contacts, calendar, camera, microphone, location, or any other system data, because it needs none of it.</p>
+
+<h2>Buying the app</h2>
+
+<p>Purchases on the App Store are handled entirely by Apple. Payment happens in Apple's systems, under <a href="https://www.apple.com/legal/privacy/">Apple's privacy policy</a>, and Apple does not pass your name, address or payment details to me. I receive sales and financial reports that count purchases by territory. Nothing in them identifies a customer, and there is no way for me to connect a purchase to a person or to anything the app does on your Mac.</p>
+
+<h2>If you email me</h2>
+
+<p>Then I have whatever you chose to put in that email, held for as long as it takes to sort the thing out and no longer. I do not add correspondents to any list, because there is no list. Nothing you send is passed to anyone else.</p>
+
+<div class="note">
+  <p>Two things worth knowing before you send something. A screenshot of the <strong>Activity</strong> pane is the single most useful bug report there is — but it names your targets and file paths, so glance over it first if that matters to you. And the <a href="/#mini">Mini check</a> script on the front page prints your macOS version and the USB serial number of the connected device, so read its output before pasting it.</p>
+</div>
+
+<h2>Children</h2>
+
+<p>Photonkeeper is a utility for telescope owners and is not directed at children. It collects nothing from anyone, of any age.</p>
+
+<h2>Your rights</h2>
+
+<p>Under UK GDPR you have rights to access, correct, export and erase personal data a company holds about you. In this app's case those rights have nothing to act on: I hold no personal data about users of Photonkeeper, and the app creates none for me to hold. The only exception is an email you have sent me, which I will delete on request — just ask at <a href="mailto:support@chryse.co.uk?subject=Privacy">support@chryse.co.uk</a>.</p>
+
+<h2>Changes to this policy</h2>
+
+<p>If the app ever does something new that touches this page, the page changes with it, in the same release. The date below says when it was last true. Material changes will also be noted in the release notes, because a privacy policy that changes quietly is not much of one.</p>
+
+<p class="meta">Last updated 8 August 2026. Questions: <a href="mailto:support@chryse.co.uk?subject=Privacy">support@chryse.co.uk</a>.</p>
+
+<footer>
+  <p><a href="/">Photonkeeper</a> · <a href="mailto:support@chryse.co.uk">support@chryse.co.uk</a></p>
+  <p>Photonkeeper is an independent project and is not affiliated with, endorsed by, or connected to DwarfLab.<br>
+  DWARF is a trademark of its respective owner.</p>
+</footer>
+
+</div>
+</body>
+</html>

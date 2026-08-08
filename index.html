@@ -216,27 +216,17 @@
 <p>Copy everything it prints and send it to <a href="mailto:support@chryse.co.uk?subject=DWARF%20Mini%20check">support@chryse.co.uk</a>. A screenshot of the Terminal window works just as well. That output tells me whether Mini support is a small change or a different app.</p>
 
 <h2 id="privacy">Privacy</h2>
-<p>Photonkeeper collects nothing about you. There is no analytics, no telemetry, no crash reporting, no account to make, no licence to check and no tracking of any kind. Nobody, me included, learns what you photograph or when.</p>
+<p>Photonkeeper collects nothing about you. There is no analytics, no telemetry, no crash reporting, no account to make, no licence to check and no tracking of any kind, and no third-party code in the app at all. Nobody, me included, learns what you photograph or when.</p>
 
-<p>The app makes exactly two kinds of network connection, and this is all of them:</p>
-<ul>
-  <li><strong>Your telescope.</strong> Over USB it isn't a network connection at all — the DWARF mounts as a disk. Over Wi-Fi it's FTP and HTTP to the telescope's own address on your own network. Outbound only; the app never listens for connections, and neither route leaves your house.</li>
-  <li><strong>The version check.</strong> Once a day the app asks this website for <code>version.json</code>, a small file saying what the current release is, and compares it with itself. It sends nothing about you or your archive — the request discloses what every web request does, an IP address and the fact that a request happened. It downloads no code and installs nothing; if there's a newer version it shows a banner and you decide. Turn it off in <strong>Settings → check for updates</strong> and the app makes no outbound connections at all beyond your own telescope.</li>
-</ul>
+<p>Your archive, its manifests and checksums, and a handful of small settings all stay on your Mac. The App Store version makes exactly one kind of network connection — to your own telescope, on your own network — and the version check is compiled out of it entirely. The version downloaded from this page adds that one check, once a day, and it can be turned off.</p>
 
-<p>Everything else stays on your Mac: the catalog of your archive, the per-session manifests and checksums, and a handful of small settings — where your archive is, which telescopes you've allowed, the last Wi-Fi address you used, your appearance choice and when the version check last ran. The Activity log lives in memory and is gone when you quit. None of it is sent anywhere.</p>
-
-<p>The app is sandboxed by macOS. It can read and write the archive folder you pick and the telescope when it's connected, and nothing else on your disk.</p>
-
-<p>If you email me, I have whatever you chose to put in the email, for as long as it takes to sort out — and no longer. Worth knowing: the <a href="#mini">Mini check</a> above prints your macOS version and the USB serial number of the connected device, so read its output before you send it if that bothers you.</p>
-
-<p class="meta">Last updated 6 August 2026. Questions: <a href="mailto:support@chryse.co.uk?subject=Privacy">support@chryse.co.uk</a>.</p>
+<p><a href="/privacy/">Read the full privacy policy</a>, which spells out every connection the app makes, exactly where your data lives, and what happens if you email me.</p>
 
 <h2>Get in touch</h2>
 <p>Bugs, confusion, feature requests, or a Mini report: <a href="mailto:support@chryse.co.uk">support@chryse.co.uk</a>. If something went wrong, the Activity pane inside the app has a log — a screenshot of that is the single most useful thing you can send.</p>
 
 <footer>
-  <p><a href="#privacy">Privacy</a> · <a href="mailto:support@chryse.co.uk">support@chryse.co.uk</a></p>
+  <p><a href="/privacy/">Privacy</a> · <a href="mailto:support@chryse.co.uk">support@chryse.co.uk</a></p>
   <p>Photonkeeper is an independent project and is not affiliated with, endorsed by, or connected to DwarfLab.<br>
   DWARF is a trademark of its respective owner.</p>
 </footer>
