@@ -6,6 +6,10 @@
 <title>Photonkeeper — archive your DWARF 3 and Mini sessions, byte for byte</title>
 <meta name="description" content="A Mac app that moves imaging sessions off a DWARF 3 or DWARF Mini into a checksummed archive, and puts them back byte-identical so the telescope can still megastack them.">
 <link rel="canonical" href="https://photonkeeper.chryse.co.uk/">
+<link rel="alternate" hreflang="en" href="https://photonkeeper.chryse.co.uk/">
+<link rel="alternate" hreflang="ja" href="https://photonkeeper.chryse.co.uk/ja/">
+<link rel="alternate" hreflang="zh-Hans" href="https://photonkeeper.chryse.co.uk/zh-Hans/">
+<link rel="alternate" hreflang="x-default" href="https://photonkeeper.chryse.co.uk/">
 <meta property="og:title" content="Photonkeeper — archive your DWARF 3 and Mini sessions, byte for byte">
 <meta property="og:description" content="Import, verify and restore DWARF 3 and DWARF Mini imaging sessions on macOS, with every file checksummed and a dry run before anything happens.">
 <meta property="og:type" content="website">
@@ -121,10 +125,39 @@
     text-align: center;
   }
   .note { border-left: 3px solid var(--star); padding-left: 16px; margin: 24px 0; }
+  /* Endonyms rather than flags: a flag names a country, and neither English
+     nor Simplified Chinese belongs to one. */
+  .langs {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 4px;
+    padding-top: 20px;
+    font-size: 0.9rem;
+  }
+  .langs a {
+    color: var(--ink-soft);
+    text-decoration: none;
+    padding: 5px 13px;
+    border-radius: 999px;
+    border: 1px solid transparent;
+  }
+  .langs a:hover { color: var(--ink); border-color: var(--line); }
+  .langs a[aria-current="page"] {
+    color: var(--ink);
+    background: var(--panel);
+    border-color: var(--line);
+  }
 </style>
 </head>
 <body>
 <div class="wrap">
+
+<nav class="langs" aria-label="Language">
+  <a href="/" hreflang="en" aria-current="page">English</a>
+  <a href="/ja/" hreflang="ja" lang="ja">日本語</a>
+  <a href="/zh-Hans/" hreflang="zh-Hans" lang="zh-Hans">简体中文</a>
+</nav>
 
 <header>
   <h1>Photonkeeper</h1>

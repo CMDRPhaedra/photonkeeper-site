@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>プライバシー — Photonkeeper</title>
+<meta name="description" content="Photonkeeper のプライバシーポリシー。このアプリはあなたに関する情報を一切収集しません。アナリティクス、テレメトリ、クラッシュレポート、アカウント、追跡のいずれもありません。">
+<link rel="canonical" href="https://photonkeeper.chryse.co.uk/ja/privacy/">
+<link rel="alternate" hreflang="en" href="https://photonkeeper.chryse.co.uk/privacy/">
+<link rel="alternate" hreflang="ja" href="https://photonkeeper.chryse.co.uk/ja/privacy/">
+<link rel="alternate" hreflang="zh-Hans" href="https://photonkeeper.chryse.co.uk/zh-Hans/privacy/">
+<link rel="alternate" hreflang="x-default" href="https://photonkeeper.chryse.co.uk/privacy/">
+<meta property="og:title" content="プライバシー — Photonkeeper">
+<meta property="og:description" content="Photonkeeper はあなたに関する情報を一切収集しません。アナリティクス、テレメトリ、クラッシュレポート、アカウント、追跡のいずれもありません。">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://photonkeeper.chryse.co.uk/ja/privacy/">
+<meta property="og:locale" content="ja_JP">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600&family=Space+Mono:wght@400;700&family=Work+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --sky:        #0B1020;
+    --sky-soft:   #141B31;
+    --panel:      #1A2238;
+    --ink:        #EAEEF7;
+    --ink-soft:   #9AA6C0;
+    --star:       #E0B24C;
+    --glow:       #6FA8FF;
+    --line:       rgba(234,238,247,0.12);
+  }
+  @media (prefers-color-scheme: light) {
+    :root {
+      --sky:      #F7F8FB;
+      --sky-soft: #EDEFF6;
+      --panel:    #FFFFFF;
+      --ink:      #161B28;
+      --ink-soft: #5B6478;
+      --star:     #A8790B;
+      --glow:     #2C5FD0;
+      --line:     rgba(22,27,40,0.12);
+    }
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    background: var(--sky);
+    color: var(--ink);
+    font-family: 'Work Sans', -apple-system, BlinkMacSystemFont, 'Hiragino Sans',
+                 'Hiragino Kaku Gothic ProN', 'Yu Gothic', Meiryo, system-ui, sans-serif;
+    line-height: 1.85;
+    -webkit-font-smoothing: antialiased;
+  }
+  .wrap { max-width: 860px; margin: 0 auto; padding: 0 24px; }
+  header { padding: 72px 0 8px; text-align: center; }
+  h1 {
+    font-family: 'Fraunces', 'Hiragino Mincho ProN', 'Yu Mincho', Georgia, serif;
+    font-weight: 600;
+    font-size: clamp(2rem, 5vw, 2.8rem);
+    margin: 0 0 12px;
+    letter-spacing: -0.01em;
+  }
+  .tagline { font-size: clamp(1.02rem, 2.4vw, 1.15rem); color: var(--ink-soft); margin: 0 auto; max-width: 30em; }
+  h2 {
+    font-family: 'Fraunces', 'Hiragino Mincho ProN', 'Yu Mincho', Georgia, serif;
+    font-weight: 600;
+    font-size: 1.45rem;
+    margin: 56px 0 16px;
+  }
+  h3 {
+    font-family: 'Fraunces', 'Hiragino Mincho ProN', 'Yu Mincho', Georgia, serif;
+    font-weight: 600;
+    font-size: 1.12rem;
+    margin: 32px 0 10px;
+  }
+  a { color: var(--glow); }
+  .meta { color: var(--ink-soft); font-size: 0.9rem; margin-top: 12px; }
+  .panel {
+    background: var(--panel);
+    border: 1px solid var(--line);
+    border-radius: 12px;
+    padding: 20px 24px;
+    margin: 24px 0;
+  }
+  ul { padding-left: 1.2em; }
+  li { margin: 10px 0; }
+  code, .mono { font-family: 'Space Mono', ui-monospace, Menlo, monospace; font-size: 0.86rem; }
+  footer {
+    border-top: 1px solid var(--line);
+    margin-top: 64px;
+    padding: 28px 0 56px;
+    color: var(--ink-soft);
+    font-size: 0.9rem;
+    text-align: center;
+  }
+  .note { border-left: 3px solid var(--star); padding-left: 16px; margin: 24px 0; }
+  .back { text-align: center; margin: 8px 0 0; font-size: 0.95rem; }
+  /* Endonyms rather than flags: a flag names a country, and neither English
+     nor Simplified Chinese belongs to one. */
+  .langs {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 4px;
+    padding-top: 20px;
+    font-size: 0.9rem;
+  }
+  .langs a {
+    color: var(--ink-soft);
+    text-decoration: none;
+    padding: 5px 13px;
+    border-radius: 999px;
+    border: 1px solid transparent;
+  }
+  .langs a:hover { color: var(--ink); border-color: var(--line); }
+  .langs a[aria-current="page"] {
+    color: var(--ink);
+    background: var(--panel);
+    border-color: var(--line);
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<nav class="langs" aria-label="言語">
+  <a href="/privacy/" hreflang="en" lang="en">English</a>
+  <a href="/ja/privacy/" hreflang="ja" aria-current="page">日本語</a>
+  <a href="/zh-Hans/privacy/" hreflang="zh-Hans" lang="zh-Hans">简体中文</a>
+</nav>
+
+<header>
+  <h1>プライバシー</h1>
+  <p class="tagline">Photonkeeper はあなたに関する情報を一切収集しません。このページでは、それが具体的に何を意味するのか、そしてあなたが作ったデータが実際どこにあるのかを詳しく説明します。</p>
+  <p class="back"><a href="/ja/">← Photonkeeper に戻る</a></p>
+</header>
+
+<div class="panel">
+  <p><strong>短く言うと。</strong>アナリティクス、テレメトリ、クラッシュレポート、広告、作成するアカウント、確認するライセンス、そしてあらゆる形の追跡 — いずれもありません。サードパーティ製 SDK はアプリ内に1つも入っていません。あなたが何をいつ撮影したかを知る人は、開発者を含めて誰もいません。あなたの画像があなたの管理下を離れることはありません。</p>
+</div>
+
+<h2>運営者について</h2>
+
+<p>Photonkeeper は、英国の独立系開発者 Dale Forster が開発・公開しています。このページの内容に関するご質問は <a href="mailto:support@chryse.co.uk?subject=Privacy">support@chryse.co.uk</a> へどうぞ。実在の人間が読んでいる実在のアドレスです。</p>
+
+<h2>アプリが収集する情報</h2>
+
+<p>ありません。「少なめ」でも「匿名化・集計済み」でもなく、ゼロです。利用状況を報告するコードも、インストールごとの識別子も、初回起動時の通信も、あなたのデータをどこかへ送る仕組みも、このアプリには存在しません。</p>
+
+<p>収集するものが何もない以上、売るものも、共有するものも、貸し出すものも、第三者に渡すものもなく、開示請求に応じて差し出せるものもありません。これは運用上の約束ではなく、アプリの作り方そのものから来る性質です。</p>
+
+<h2>アプリが行うネットワーク接続</h2>
+
+<p>以下が全リストです。入手経路によってわずかに異なります。</p>
+
+<h3>App Store 版</h3>
+
+<p><strong>接続は1種類だけ。あなた自身のネットワーク上の、あなた自身の望遠鏡です。</strong></p>
+
+<ul>
+  <li><strong>USB 接続の場合</strong>、そもそもネットワーク接続ではありません。DWARF はディスクとしてマウントされ、アプリは他のボリュームと同じようにファイルを読み書きします。</li>
+  <li><strong>Wi-Fi 接続の場合</strong>、アプリは<em>あなたが</em>入力したアドレスに対して、あなた自身のネットワーク上で FTP と HTTP を話します。送信専用です。アプリが着信接続を待ち受けることはなく、デバイスの探索やスキャンも行わず、この経路に関する情報が家の外へ出ることはありません。</li>
+</ul>
+
+<p>App Store 版はこれ以外に、いかなる外部接続も行いません。後述のバージョン確認は、このビルドでは単に無効化されているのではなく、コンパイル時に取り除かれています。バイナリの中にアドレスすら含まれていません。</p>
+
+<h3>このサイトから直接配布している版</h3>
+
+<p>上記すべてに加えて、もう1つあります。直接ダウンロードされたアプリには、更新を届けるストアがないためです。</p>
+
+<ul>
+  <li><strong>バージョン確認。</strong>アプリは1日1回、このウェブサイトに <code>version.json</code>（最新リリース名が書かれた小さなファイル）を要求し、自分自身と比較します。あなた、あなたの Mac、あなたのアーカイブに関する情報は一切送信しません。この通信が明かすのは、あらゆるウェブリクエストが明かすもの — IP アドレスと、リクエストがあったという事実だけです。コードのダウンロードもインストールも行いません。新しいものがあればバナーを表示し、どうするかはあなたが決めます。<strong>設定 → アップデートを確認</strong>でオフにすれば、アプリはあなた自身の望遠鏡以外へ一切の外部接続を行いません。</li>
+</ul>
+
+<h2>データの保存場所</h2>
+
+<p>あなたの Mac の中、しかも目に見える場所です。</p>
+
+<ul>
+  <li><strong>アーカイブ</strong> — 撮影セッションそのもの。あなたが選んだフォルダの中の、Finder で開ける普通のディレクトリに入っています。セッションフォルダの名前が変わることはなく、中身が書き換えられることもありません。</li>
+  <li><strong>セッションごとのマニフェスト</strong> — 各ファイルと SHA-256 チェックサムの一覧で、アーカイブ内の各セッションと並べて保存されます。検証とバイト単位で同一の書き戻しを可能にしているのがこれです。</li>
+  <li><strong>カタログ</strong> — アーカイブの索引で、Application Support に置かれます。派生データなので、削除してもマニフェストから再構築されます。</li>
+  <li><strong>いくつかの小さな設定</strong> — アーカイブの場所、アクセスを許可した望遠鏡、最後に使った Wi-Fi アドレス、外観の選択、バージョン確認を最後に実行した日時。</li>
+  <li><strong>アクティビティログ</strong> — メモリ上にのみ保持され、アプリを終了すると消えます。</li>
+</ul>
+
+<p>いずれもどこにも送信されません。このアプリにはクラウド機能も、同期サービスも、バックアップサービスもありません。アーカイブをバックアップしたい、NAS に置きたいという場合、それはあなた自身の管理下にあるあなた自身のストレージの話で、アプリはそこでも問題なく動きます。</p>
+
+<h2>サンドボックスが許可している範囲</h2>
+
+<p>App Store 版は macOS の App Sandbox 内で動作します。読み書きできるのは、あなたが選んだアーカイブフォルダと、開くパネルで明示的に許可した望遠鏡ボリュームだけで、ディスク上のそれ以外には触れません。この許可は記憶されるので繰り返し尋ねられることはなく、システム設定から取り消せます。</p>
+
+<p>アプリは、写真ライブラリ、連絡先、カレンダー、カメラ、マイク、位置情報、その他のシステムデータへのアクセスを一切要求しません。必要ないからです。</p>
+
+<h2>アプリの購入について</h2>
+
+<p>App Store での購入手続きは、すべて Apple が扱います。決済は <a href="https://www.apple.com/legal/privacy/">Apple のプライバシーポリシー</a>のもと Apple のシステム内で行われ、Apple があなたの氏名・住所・支払い情報を開発者に渡すことはありません。開発者が受け取るのは、地域別の販売件数を集計した売上・財務レポートだけです。そこに個人を特定できる情報はなく、購入を特定の人物と結び付けたり、アプリが Mac 上で行う動作と結び付けたりする手段は存在しません。</p>
+
+<h2>メールをいただいた場合</h2>
+
+<p>そのメールにあなたが書いた内容を、こちらが持つことになります。用件が片付くまでのあいだ保持し、それ以上は保持しません。差出人をリストに追加することはありません。そもそもリストが存在しないからです。いただいた内容を他の誰かに渡すこともありません。</p>
+
+<div class="note">
+  <p>送る前に知っておくとよいこと。<strong>アクティビティ</strong>ペインのスクリーンショットは、これ以上ないほど有用なバグ報告です。ただしターゲット名やファイルパスが写り込むので、気になる場合は先に目を通してください。</p>
+</div>
+
+<h2>お子様について</h2>
+
+<p>Photonkeeper は望遠鏡の所有者向けのユーティリティであり、子ども向けのものではありません。年齢を問わず、誰からも何も収集しません。</p>
+
+<h2>あなたの権利</h2>
+
+<p>英国 GDPR のもと、企業が保持するあなたの個人データについて、アクセス・訂正・移行・消去を求める権利があります。ただしこのアプリの場合、それらの権利が働きかける対象がありません。開発者は Photonkeeper の利用者に関する個人データを保持しておらず、アプリがそれを生み出すこともないからです。唯一の例外はあなたが送ったメールで、ご要望があれば削除します。<a href="mailto:support@chryse.co.uk?subject=Privacy">support@chryse.co.uk</a> までご連絡ください。</p>
+
+<h2>このポリシーの変更</h2>
+
+<p>アプリがこのページに関わる新しい動作をするようになれば、同じリリースでこのページも変わります。下の日付は、その内容が最後に正しかった時点を示します。重要な変更はリリースノートにも記載します。黙って変わるプライバシーポリシーは、プライバシーポリシーとは呼べないからです。</p>
+
+<p class="meta">最終更新 2026年8月8日。お問い合わせ: <a href="mailto:support@chryse.co.uk?subject=Privacy">support@chryse.co.uk</a>。</p>
+
+<footer>
+  <p><a href="/ja/">Photonkeeper</a> · <a href="mailto:support@chryse.co.uk">support@chryse.co.uk</a></p>
+  <p>Photonkeeper は独立したプロジェクトであり、DwarfLab とは提携・推奨・関連のいずれの関係もありません。<br>
+  DWARF は各権利者の商標です。</p>
+</footer>
+
+</div>
+</body>
+</html>

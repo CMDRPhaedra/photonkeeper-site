@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Photonkeeper — DWARF 3 と Mini の撮影セッションを、1バイトも違わずアーカイブ</title>
+<meta name="description" content="DWARF 3 や DWARF Mini の撮影セッションをチェックサム付きのアーカイブへ取り込み、バイト単位で同一のまま書き戻せる macOS アプリ。望遠鏡側のメガスタックもそのまま使えます。">
+<link rel="canonical" href="https://photonkeeper.chryse.co.uk/ja/">
+<link rel="alternate" hreflang="en" href="https://photonkeeper.chryse.co.uk/">
+<link rel="alternate" hreflang="ja" href="https://photonkeeper.chryse.co.uk/ja/">
+<link rel="alternate" hreflang="zh-Hans" href="https://photonkeeper.chryse.co.uk/zh-Hans/">
+<link rel="alternate" hreflang="x-default" href="https://photonkeeper.chryse.co.uk/">
+<meta property="og:title" content="Photonkeeper — DWARF 3 と Mini の撮影セッションを、1バイトも違わずアーカイブ">
+<meta property="og:description" content="DWARF 3 と DWARF Mini の撮影セッションを macOS で取り込み、検証し、書き戻す。すべてのファイルにチェックサムを付け、実行前には必ずドライランを。">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://photonkeeper.chryse.co.uk/ja/">
+<meta property="og:locale" content="ja_JP">
+<meta property="og:image" content="https://photonkeeper.chryse.co.uk/shots/sessions.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Photonkeeper — DWARF 3 と Mini の撮影セッションを、1バイトも違わずアーカイブ">
+<meta name="twitter:description" content="DWARF 3 と DWARF Mini の撮影セッションを macOS で取り込み、検証し、書き戻す。すべてのファイルにチェックサム付き。">
+<meta name="twitter:image" content="https://photonkeeper.chryse.co.uk/shots/sessions.png">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "Photonkeeper",
+  "url": "https://photonkeeper.chryse.co.uk/ja/",
+  "inLanguage": "ja",
+  "description": "DWARF 3 / DWARF Mini スマート望遠鏡とローカルアーカイブの間で、撮影セッションをバイト単位で同一のまま移動させる macOS アプリ。SHA-256 で検証します。",
+  "applicationCategory": "UtilitiesApplication",
+  "operatingSystem": "macOS 14 以降",
+  "softwareVersion": "1.9"
+}
+</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600&family=Space+Mono:wght@400;700&family=Work+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --sky:        #0B1020;
+    --sky-soft:   #141B31;
+    --panel:      #1A2238;
+    --ink:        #EAEEF7;
+    --ink-soft:   #9AA6C0;
+    --star:       #E0B24C;
+    --glow:       #6FA8FF;
+    --line:       rgba(234,238,247,0.12);
+  }
+  @media (prefers-color-scheme: light) {
+    :root {
+      --sky:      #F7F8FB;
+      --sky-soft: #EDEFF6;
+      --panel:    #FFFFFF;
+      --ink:      #161B28;
+      --ink-soft: #5B6478;
+      --star:     #A8790B;
+      --glow:     #2C5FD0;
+      --line:     rgba(22,27,40,0.12);
+    }
+  }
+  * { box-sizing: border-box; }
+  /* Work Sans and Fraunces carry no kana or kanji, so the Japanese stack
+     falls through to the platform faces before the generic families. */
+  body {
+    margin: 0;
+    background: var(--sky);
+    color: var(--ink);
+    font-family: 'Work Sans', -apple-system, BlinkMacSystemFont, 'Hiragino Sans',
+                 'Hiragino Kaku Gothic ProN', 'Yu Gothic', Meiryo, system-ui, sans-serif;
+    line-height: 1.85;
+    -webkit-font-smoothing: antialiased;
+  }
+  .wrap { max-width: 860px; margin: 0 auto; padding: 0 24px; }
+  header { padding: 72px 0 40px; text-align: center; }
+  h1 {
+    font-family: 'Fraunces', 'Hiragino Mincho ProN', 'Yu Mincho', Georgia, serif;
+    font-weight: 600;
+    font-size: clamp(2.1rem, 5.4vw, 3.2rem);
+    margin: 0 0 12px;
+    letter-spacing: -0.01em;
+  }
+  .tagline { font-size: clamp(1.02rem, 2.4vw, 1.2rem); color: var(--ink-soft); margin: 0 auto; max-width: 30em; }
+  h2 {
+    font-family: 'Fraunces', 'Hiragino Mincho ProN', 'Yu Mincho', Georgia, serif;
+    font-weight: 600;
+    font-size: 1.45rem;
+    margin: 56px 0 16px;
+  }
+  a { color: var(--glow); }
+  .cta { text-align: center; margin: 36px 0 8px; }
+  .button {
+    display: inline-block;
+    background: var(--glow);
+    color: #fff;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 1.05rem;
+    padding: 14px 32px;
+    border-radius: 10px;
+  }
+  .button:hover { filter: brightness(1.08); }
+  .meta { color: var(--ink-soft); font-size: 0.9rem; margin-top: 12px; }
+  .panel {
+    background: var(--panel);
+    border: 1px solid var(--line);
+    border-radius: 12px;
+    padding: 20px 24px;
+    margin: 24px 0;
+  }
+  ul { padding-left: 1.2em; }
+  li { margin: 10px 0; }
+  figure { margin: 28px 0; }
+  figure img {
+    width: 100%;
+    height: auto;
+    display: block;
+    border: 1px solid var(--line);
+    border-radius: 10px;
+  }
+  figcaption { color: var(--ink-soft); font-size: 0.92rem; margin-top: 10px; text-align: center; }
+  code, .mono { font-family: 'Space Mono', ui-monospace, Menlo, monospace; font-size: 0.86rem; }
+  .checksum { word-break: break-all; color: var(--ink-soft); }
+  footer {
+    border-top: 1px solid var(--line);
+    margin-top: 64px;
+    padding: 28px 0 56px;
+    color: var(--ink-soft);
+    font-size: 0.9rem;
+    text-align: center;
+  }
+  .note { border-left: 3px solid var(--star); padding-left: 16px; margin: 24px 0; }
+  /* Endonyms rather than flags: a flag names a country, and neither English
+     nor Simplified Chinese belongs to one. */
+  .langs {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 4px;
+    padding-top: 20px;
+    font-size: 0.9rem;
+  }
+  .langs a {
+    color: var(--ink-soft);
+    text-decoration: none;
+    padding: 5px 13px;
+    border-radius: 999px;
+    border: 1px solid transparent;
+  }
+  .langs a:hover { color: var(--ink); border-color: var(--line); }
+  .langs a[aria-current="page"] {
+    color: var(--ink);
+    background: var(--panel);
+    border-color: var(--line);
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<nav class="langs" aria-label="言語">
+  <a href="/" hreflang="en" lang="en">English</a>
+  <a href="/ja/" hreflang="ja" aria-current="page">日本語</a>
+  <a href="/zh-Hans/" hreflang="zh-Hans" lang="zh-Hans">简体中文</a>
+</nav>
+
+<header>
+  <h1>Photonkeeper</h1>
+  <p class="tagline">DWARF&nbsp;3 や DWARF&nbsp;Mini の撮影セッションを、手元のドライブ上のきちんとしたアーカイブへ。書き戻すときは<strong>1バイトも違わない状態</strong>で戻すので、望遠鏡側のメガスタックや再スタックもそのまま使えます。</p>
+  <div class="cta">
+    <a class="button" href="/Photonkeeper-1.9.zip" download>macOS 版をダウンロード</a>
+    <div class="meta">バージョン 1.9 · 1.4&nbsp;MB · macOS 14 以降 · Apple 公証済み</div>
+  </div>
+</header>
+
+<div class="note">
+  <strong>DWARF&nbsp;3 と DWARF&nbsp;Mini に対応しています。</strong>どちらも実データで動作を確認済みです。DWARF&nbsp;3 は開発者本人が、Mini は所有者の方が往復の全工程を通して試してくださいました。うまく動かないときや、分かりにくいところがあれば <a href="mailto:support@chryse.co.uk">support@chryse.co.uk</a> までお知らせください。スクリーンショットも歓迎です。
+</div>
+
+<h2>できること</h2>
+<ul>
+  <li>望遠鏡上の新しいデータをまとめて読み込みます。コピーが終わってから別途ハッシュを取り直すのではなく、コピー<em>しながら</em>各ファイルの SHA-256 チェックサムを計算します。</li>
+  <li>セッションを望遠鏡へ書き戻します。ターゲット・日付・露出・ゲインで絞り込め、送信時にハッシュを計算し、書き込み後に読み返して照合します。</li>
+  <li>本体の空き容量を確保します。ただし対象は、アーカイブと照合して検証が取れたばかりのセッションだけです。</li>
+  <li><code>M 42</code>・<code>M42</code>・<code>NGC 1976</code> を3つのフォルダに分けず、1つのターゲットとして扱います。</li>
+  <li>後日アーカイブ全体を再検査してビットロットを調べ、結果を記録し、破損したファイルを望遠鏡から取り直せます。</li>
+  <li>カード全体を読み込むことも、一覧から選んだセッションだけを読み込むこともできます。</li>
+  <li>指示があればアーカイブからセッションを削除します。直接消さず、必ずゴミ箱を経由します。</li>
+  <li>すべての操作にドライランがあり、何が起きるかを実行前に正確に確認できます。</li>
+</ul>
+
+<p>セッションフォルダの名前が変わることはなく、中身に手が入ることもありません。整理はすべて、その上位のディレクトリで行われます。</p>
+
+<h2>望遠鏡がなくても試せます</h2>
+<p>サンプルデータと専用のサンプルアーカイブを使うデモモードがあります。自分の撮影データに触れる前に、往復の流れをひととおり確認できます。メニューの「望遠鏡 → デモモードを試す」から。</p>
+
+<h2>スクリーンショット</h2>
+
+<figure>
+  <img src="/shots/sessions.png" alt="1つのターゲットのセッション一覧。日付、露出、サブフレーム数、サイズ、緑色の検証済み列が並んでいる。">
+  <figcaption>1つのターゲットにまとめられたセッション。どれもアーカイブと照合してチェックサム検証済みです。</figcaption>
+</figure>
+
+<figure>
+  <img src="/shots/dry-run.png" alt="コピー対象になるすべてのファイルとサイズを、実行前に一覧表示しているドライラン。">
+  <figcaption>どの操作も先にドライランできます。1バイトも動かす前の、これが全リストです。</figcaption>
+</figure>
+
+<figure>
+  <img src="/shots/targets.png" alt="ターゲットごとのセッション数と積算露出時間が並ぶ、アーカイブのサイドバー。">
+  <figcaption>ターゲット別に見たアーカイブ。セッション数と積算露出時間つき。</figcaption>
+</figure>
+
+<h2>インストール</h2>
+<p>zip を展開し、<strong>Photonkeeper</strong> をアプリケーションフォルダにドラッグしてください。初回起動時、macOS がこう尋ねます。</p>
+<div class="panel">
+  「"Photonkeeper"はインターネットからダウンロードされたアプリケーションです。開いてもよろしいですか?」
+</div>
+<p><strong>開く</strong>をクリックしてください。ダウンロードしたアプリなら必ず出る通常の確認です。Photonkeeper は Apple Developer ID で署名され、Apple の公証を受けているので、未署名のソフトウェアに macOS が出すブロック画面ではなく、このワンクリックで済みます。</p>
+
+<h2>ダウンロードしたファイルの確認</h2>
+<p>データのチェックサム計算を仕事にしているアプリですから、自分自身のチェックサムも置いておきます。ダウンロードしたファイルに対して次を実行してください。</p>
+<div class="panel">
+  <div class="mono">shasum -a 256 Photonkeeper-1.9.zip</div>
+</div>
+<p class="mono checksum">cfc743443deb8802749e698f3afc36561db7c027e38c5102fac7828602c72792</p>
+
+<h2>動作環境</h2>
+<ul>
+  <li>macOS 14 (Sonoma) 以降。Apple シリコン、Intel のどちらでも動きます。</li>
+  <li>USB 接続の DWARF 3 または DWARF Mini。</li>
+  <li>アーカイブを置く場所。外付けドライブでも構いませんし、フォルダを移動したり名前を変えたりしても記憶されます。</li>
+</ul>
+
+<h2 id="privacy">プライバシー</h2>
+<p>Photonkeeper はあなたに関する情報を一切収集しません。アナリティクスもテレメトリもクラッシュレポートもなく、作るアカウントも、確認するライセンスもなく、いかなる追跡も行いません。サードパーティ製のコードはアプリ内に1行も入っていません。あなたが何をいつ撮影したかを知る人は、開発者を含めて誰もいません。</p>
+
+<p>アーカイブも、そのマニフェストとチェックサムも、いくつかの小さな設定も、すべてあなたの Mac の中に留まります。App Store 版が行うネットワーク接続は1種類だけ — あなた自身のネットワーク上の、あなた自身の望遠鏡へのものです。バージョン確認はこのビルドからコンパイル時に完全に取り除かれています。このページから配布している版にはそのバージョン確認が1日1回だけ加わりますが、オフにできます。</p>
+
+<p><a href="/ja/privacy/">プライバシーポリシー全文</a>では、アプリが行うすべての接続、データが実際にどこに置かれるか、メールをいただいた場合にどうなるかを詳しく説明しています。</p>
+
+<h2>お問い合わせ</h2>
+<p>不具合、分かりにくい点、機能のご要望は <a href="mailto:support@chryse.co.uk">support@chryse.co.uk</a> へ。うまくいかなかったときは、アプリ内の「アクティビティ」ペインにログがあります。その部分のスクリーンショットが、送っていただけるもののなかで最も役に立ちます。</p>
+
+<footer>
+  <p><a href="/ja/privacy/">プライバシー</a> · <a href="mailto:support@chryse.co.uk">support@chryse.co.uk</a></p>
+  <p>Photonkeeper は独立したプロジェクトであり、DwarfLab とは提携・推奨・関連のいずれの関係もありません。<br>
+  DWARF は各権利者の商標です。</p>
+</footer>
+
+</div>
+</body>
+</html>

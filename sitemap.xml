@@ -1,13 +1,58 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>https://photonkeeper.chryse.co.uk/</loc>
-    <lastmod>2026-08-08</lastmod>
+    <lastmod>2026-08-13</lastmod>
     <changefreq>weekly</changefreq>
+    <xhtml:link rel="alternate" hreflang="en" href="https://photonkeeper.chryse.co.uk/"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://photonkeeper.chryse.co.uk/ja/"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://photonkeeper.chryse.co.uk/zh-Hans/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://photonkeeper.chryse.co.uk/"/>
+  </url>
+  <url>
+    <loc>https://photonkeeper.chryse.co.uk/ja/</loc>
+    <lastmod>2026-08-13</lastmod>
+    <changefreq>weekly</changefreq>
+    <xhtml:link rel="alternate" hreflang="en" href="https://photonkeeper.chryse.co.uk/"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://photonkeeper.chryse.co.uk/ja/"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://photonkeeper.chryse.co.uk/zh-Hans/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://photonkeeper.chryse.co.uk/"/>
+  </url>
+  <url>
+    <loc>https://photonkeeper.chryse.co.uk/zh-Hans/</loc>
+    <lastmod>2026-08-13</lastmod>
+    <changefreq>weekly</changefreq>
+    <xhtml:link rel="alternate" hreflang="en" href="https://photonkeeper.chryse.co.uk/"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://photonkeeper.chryse.co.uk/ja/"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://photonkeeper.chryse.co.uk/zh-Hans/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://photonkeeper.chryse.co.uk/"/>
   </url>
   <url>
     <loc>https://photonkeeper.chryse.co.uk/privacy/</loc>
-    <lastmod>2026-08-08</lastmod>
+    <lastmod>2026-08-13</lastmod>
     <changefreq>yearly</changefreq>
+    <xhtml:link rel="alternate" hreflang="en" href="https://photonkeeper.chryse.co.uk/privacy/"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://photonkeeper.chryse.co.uk/ja/privacy/"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://photonkeeper.chryse.co.uk/zh-Hans/privacy/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://photonkeeper.chryse.co.uk/privacy/"/>
+  </url>
+  <url>
+    <loc>https://photonkeeper.chryse.co.uk/ja/privacy/</loc>
+    <lastmod>2026-08-13</lastmod>
+    <changefreq>yearly</changefreq>
+    <xhtml:link rel="alternate" hreflang="en" href="https://photonkeeper.chryse.co.uk/privacy/"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://photonkeeper.chryse.co.uk/ja/privacy/"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://photonkeeper.chryse.co.uk/zh-Hans/privacy/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://photonkeeper.chryse.co.uk/privacy/"/>
+  </url>
+  <url>
+    <loc>https://photonkeeper.chryse.co.uk/zh-Hans/privacy/</loc>
+    <lastmod>2026-08-13</lastmod>
+    <changefreq>yearly</changefreq>
+    <xhtml:link rel="alternate" hreflang="en" href="https://photonkeeper.chryse.co.uk/privacy/"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://photonkeeper.chryse.co.uk/ja/privacy/"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://photonkeeper.chryse.co.uk/zh-Hans/privacy/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://photonkeeper.chryse.co.uk/privacy/"/>
   </url>
 </urlset>

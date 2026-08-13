@@ -6,6 +6,10 @@
 <title>Privacy — Photonkeeper</title>
 <meta name="description" content="Photonkeeper's privacy policy. The app collects nothing about you: no analytics, no telemetry, no crash reporting, no account, no tracking of any kind.">
 <link rel="canonical" href="https://photonkeeper.chryse.co.uk/privacy/">
+<link rel="alternate" hreflang="en" href="https://photonkeeper.chryse.co.uk/privacy/">
+<link rel="alternate" hreflang="ja" href="https://photonkeeper.chryse.co.uk/ja/privacy/">
+<link rel="alternate" hreflang="zh-Hans" href="https://photonkeeper.chryse.co.uk/zh-Hans/privacy/">
+<link rel="alternate" hreflang="x-default" href="https://photonkeeper.chryse.co.uk/privacy/">
 <meta property="og:title" content="Privacy — Photonkeeper">
 <meta property="og:description" content="Photonkeeper collects nothing about you. No analytics, no telemetry, no crash reporting, no account, no tracking.">
 <meta property="og:type" content="website">
@@ -89,10 +93,39 @@
   }
   .note { border-left: 3px solid var(--star); padding-left: 16px; margin: 24px 0; }
   .back { text-align: center; margin: 8px 0 0; font-size: 0.95rem; }
+  /* Endonyms rather than flags: a flag names a country, and neither English
+     nor Simplified Chinese belongs to one. */
+  .langs {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 4px;
+    padding-top: 20px;
+    font-size: 0.9rem;
+  }
+  .langs a {
+    color: var(--ink-soft);
+    text-decoration: none;
+    padding: 5px 13px;
+    border-radius: 999px;
+    border: 1px solid transparent;
+  }
+  .langs a:hover { color: var(--ink); border-color: var(--line); }
+  .langs a[aria-current="page"] {
+    color: var(--ink);
+    background: var(--panel);
+    border-color: var(--line);
+  }
 </style>
 </head>
 <body>
 <div class="wrap">
+
+<nav class="langs" aria-label="Language">
+  <a href="/privacy/" hreflang="en" aria-current="page">English</a>
+  <a href="/ja/privacy/" hreflang="ja" lang="ja">日本語</a>
+  <a href="/zh-Hans/privacy/" hreflang="zh-Hans" lang="zh-Hans">简体中文</a>
+</nav>
 
 <header>
   <h1>Privacy</h1>
