@@ -1,6 +1,6 @@
 {
-  "version": "1.9",
-  "build": 13,
-  "url": "https://photonkeeper.chryse.co.uk/",
-  "notes": "Delete sessions from the archive, via the Trash. Show any session in Finder. Import only the sessions you pick."
+  "version": "1.10",
+  "build": 17,
+  "url": "https://apps.apple.com/app/photonkeeper/id6799277298",
+  "notes": "Photonkeeper has moved to the Mac App Store, and updates come from there now. The copy you have keeps working; the App Store version is a paid app."
 }
