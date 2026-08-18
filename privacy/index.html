@@ -167,32 +167,40 @@
 <p>Everything above, plus one more, because a directly downloaded app has no store to update it:</p>
 
 <ul>
-  <li><strong>The version check.</strong> Once a day the app asks this website for <code>version.json</code>, a small file naming the current release, and compares it with itself. It sends nothing about you, your Mac or your archive — the request discloses what every web request discloses, an IP address and the fact that a request happened. It downloads no code and installs nothing; if something newer exists, the app shows a banner and you decide what to do. Turn it off in <strong>Settings → Check for updates</strong> and the app makes no outbound connection at all beyond your own telescope.</li>
+  <li><strong>The version check.</strong> Once a day the app asks this website for <code>version.json</code>, a small file naming the current release, and compares it with itself. It sends nothing about you, your computer or your archive — the request discloses what every web request discloses, an IP address and the fact that a request happened. It downloads no code and installs nothing; if something newer exists, the app shows a banner and you decide what to do. Turn it off in <strong>Settings → Check for updates</strong> and the app makes no outbound connection at all beyond your own telescope.</li>
 </ul>
+
+<h3>The Microsoft Store version</h3>
+
+<p>The same single kind of connection as the App Store version: <strong>your own telescope, on your own network</strong>, over USB or over Wi&#8209;Fi, exactly as described above.</p>
+
+<p>The version check does not exist in this build at all. It is not switched off and not removed at compile time — the Windows app was never written with update-checking code in it, because the Microsoft Store handles updates. Beyond your own telescope, the Windows app makes no outbound connection of any kind.</p>
 
 <h2>Where your data lives</h2>
 
-<p>On your Mac, in places you can see:</p>
+<p>On your own computer, in places you can see:</p>
 
 <ul>
   <li><strong>Your archive</strong> — the imaging sessions themselves, in the folder you chose, in ordinary directories you can open in Finder. Session folders are never renamed and their contents are never altered.</li>
   <li><strong>Per-session manifests</strong> — a list of every file with its SHA-256 checksum, written alongside each session in the archive. This is what makes verification and byte-identical restores possible.</li>
-  <li><strong>The catalog</strong> — an index of the archive, kept in Application Support. It is derived data: delete it and the app rebuilds it from the manifests.</li>
+  <li><strong>The catalog</strong> — an index of the archive, kept in Application Support on macOS and in your local application data on Windows. It is derived data: delete it and the app rebuilds it from the manifests.</li>
   <li><strong>A handful of small settings</strong> — where your archive is, which telescopes you have granted access to, the last Wi-Fi address you used, your appearance choice, and when the version check last ran.</li>
   <li><strong>The Activity log</strong> — held in memory only, and gone when you quit.</li>
 </ul>
 
 <p>None of it is transmitted anywhere. There is no cloud component, no sync service and no backup service in this app. If you want your archive backed up or on a NAS, that is your own storage under your own arrangements, and the app is happy to live there.</p>
 
-<h2>What the sandbox allows</h2>
+<h2>What the app is allowed to reach</h2>
 
 <p>The App Store version runs inside the macOS App Sandbox. It can read and write the archive folder you picked and a telescope volume you have specifically granted through an open panel, and nothing else on your disk. Those grants are remembered so you are not asked repeatedly, and you can withdraw them in System Settings.</p>
 
-<p>The app asks for no access to your Photos library, contacts, calendar, camera, microphone, location, or any other system data, because it needs none of it.</p>
+<p>The Windows version is not sandboxed in that sense — a packaged Windows desktop app runs with your own permissions, so in principle it could read anything you can. In practice it reads and writes two things: the archive folder you chose, and a telescope you connected. It asks Windows for no special capability beyond running as a normal desktop application; in particular it does not request broad file system access, which would have meant asking for every file on the machine in order to use one folder.</p>
+
+<p>On either platform the app asks for no access to your photo library, contacts, calendar, camera, microphone, location, or any other system data, because it needs none of it.</p>
 
 <h2>Buying the app</h2>
 
-<p>Purchases on the App Store are handled entirely by Apple. Payment happens in Apple's systems, under <a href="https://www.apple.com/legal/privacy/">Apple's privacy policy</a>, and Apple does not pass your name, address or payment details to me. I receive sales and financial reports that count purchases by territory. Nothing in them identifies a customer, and there is no way for me to connect a purchase to a person or to anything the app does on your Mac.</p>
+<p>Purchases are handled entirely by the store you bought from — by Apple under <a href="https://www.apple.com/legal/privacy/">Apple's privacy policy</a>, or by Microsoft under <a href="https://privacy.microsoft.com/privacystatement">Microsoft's privacy statement</a>. Payment happens in their systems, and neither passes your name, address or payment details to me. I receive sales and financial reports that count purchases by territory. Nothing in them identifies a customer, and there is no way for me to connect a purchase to a person or to anything the app does on your computer.</p>
 
 <h2>If you email me</h2>
 
@@ -214,7 +222,7 @@
 
 <p>If the app ever does something new that touches this page, the page changes with it, in the same release. The date below says when it was last true. Material changes will also be noted in the release notes, because a privacy policy that changes quietly is not much of one.</p>
 
-<p class="meta">Last updated 8 August 2026. Questions: <a href="mailto:support@chryse.co.uk?subject=Privacy">support@chryse.co.uk</a>.</p>
+<p class="meta">Last updated 18 August 2026. Questions: <a href="mailto:support@chryse.co.uk?subject=Privacy">support@chryse.co.uk</a>.</p>
 
 <footer>
   <p><a href="/">Photonkeeper</a> · <a href="mailto:support@chryse.co.uk">support@chryse.co.uk</a></p>
