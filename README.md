@@ -6,19 +6,29 @@ The page for Photonkeeper, served at
 Public on purpose: this repo holds only the page, its screenshots and its
 translations. The source lives in the private `photonkeeper` repo, and the app
 itself is distributed by the
-[Mac App Store](https://apps.apple.com/app/photonkeeper/id6799277298).
+[Mac App Store](https://apps.apple.com/app/photonkeeper/id6799277298) and the
+[Microsoft Store](https://apps.microsoft.com/detail/9NM0K9T75QMZ).
 
 ## Releasing a new build
 
 1. `./App/build.sh --pkg` in the source repo.
 2. Upload `App/build/Photonkeeper.pkg` to App Store Connect with Transporter.
-3. Once the build is **approved**, update the version in `index.html`,
-   `ja/index.html` and `zh-Hans/index.html` — the `.meta` line under the badge
-   and `softwareVersion` in the schema.org block, in all three.
-4. Commit and push. Pages redeploys on its own.
+   For Windows, publish the two MSIX packages out of `windows/src/Photonkeeper`
+   and submit them in Partner Center.
+3. Nothing here needs changing for an ordinary release. Commit and push if
+   something else did; Pages redeploys on its own.
 
-Approval, not submission: a page advertising a version review has not passed
-yet is a page that lies for however many days the review takes.
+**The page no longer names a version.** It used to, in three files and in the
+schema.org block of each, updated on approval rather than on submission —
+because a page advertising a version review has not passed yet lies for however
+many days the review takes. Two stores with independent release cadences turned
+that from one careful edit into two, each able to be wrong on its own, for a
+number nobody chooses the app by. The `.meta` line under the badges now names
+the platform requirements instead, which change about once a year.
+
+The requirements do still need an edit when a minimum moves — the `.meta` line
+and the Requirements list in all three languages, plus `operatingSystem` in the
+schema.org block.
 
 ## version.json
 

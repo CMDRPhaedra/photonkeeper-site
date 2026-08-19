@@ -4,20 +4,20 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Photonkeeper — archive your DWARF 3 and Mini sessions, byte for byte</title>
-<meta name="description" content="A Mac app that moves imaging sessions off a DWARF 3 or DWARF Mini into a checksummed archive, and puts them back byte-identical so the telescope can still megastack them.">
+<meta name="description" content="A Mac and Windows app that moves imaging sessions off a DWARF 3 or DWARF Mini into a checksummed archive, and puts them back byte-identical so the telescope can still megastack them.">
 <link rel="canonical" href="https://photonkeeper.chryse.co.uk/">
 <link rel="alternate" hreflang="en" href="https://photonkeeper.chryse.co.uk/">
 <link rel="alternate" hreflang="ja" href="https://photonkeeper.chryse.co.uk/ja/">
 <link rel="alternate" hreflang="zh-Hans" href="https://photonkeeper.chryse.co.uk/zh-Hans/">
 <link rel="alternate" hreflang="x-default" href="https://photonkeeper.chryse.co.uk/">
 <meta property="og:title" content="Photonkeeper — archive your DWARF 3 and Mini sessions, byte for byte">
-<meta property="og:description" content="Import, verify and restore DWARF 3 and DWARF Mini imaging sessions on macOS, with every file checksummed and a dry run before anything happens.">
+<meta property="og:description" content="Import, verify and restore DWARF 3 and DWARF Mini imaging sessions on macOS and Windows, with every file checksummed and a dry run before anything happens.">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://photonkeeper.chryse.co.uk/">
 <meta property="og:image" content="https://photonkeeper.chryse.co.uk/shots/sessions.png">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Photonkeeper — archive your DWARF 3 and Mini sessions, byte for byte">
-<meta name="twitter:description" content="Import, verify and restore DWARF 3 and DWARF Mini imaging sessions on macOS, every file checksummed.">
+<meta name="twitter:description" content="Import, verify and restore DWARF 3 and DWARF Mini imaging sessions on macOS and Windows, every file checksummed.">
 <meta name="twitter:image" content="https://photonkeeper.chryse.co.uk/shots/sessions.png">
 <script type="application/ld+json">
 {
@@ -25,11 +25,16 @@
   "@type": "SoftwareApplication",
   "name": "Photonkeeper",
   "url": "https://photonkeeper.chryse.co.uk/",
-  "installUrl": "https://apps.apple.com/app/photonkeeper/id6799277298",
-  "description": "A macOS app that moves imaging sessions between a DWARF 3 or DWARF Mini smart telescope and a local archive, byte-identically, with SHA-256 verification.",
+  "installUrl": [
+    "https://apps.apple.com/app/photonkeeper/id6799277298",
+    "https://apps.microsoft.com/detail/9NM0K9T75QMZ"
+  ],
+  "description": "A macOS and Windows app that moves imaging sessions between a DWARF 3 or DWARF Mini smart telescope and a local archive, byte-identically, with SHA-256 verification.",
   "applicationCategory": "UtilitiesApplication",
-  "operatingSystem": "macOS 14 or later",
-  "softwareVersion": "1.10"
+  "operatingSystem": [
+    "macOS 14 or later",
+    "Windows 10 version 1809 or later"
+  ]
 }
 </script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -93,7 +98,20 @@
      CSS: the artwork itself changes, not its styling. 48px clears Apple's
      40px minimum for the web. */
   .badge { display: inline-block; }
+  /* One height for both, since two badges of different provenance sitting at
+     different sizes reads as a mistake. 48px clears Apple's 40px minimum for
+     the web and Microsoft's own guidance, and the artwork is vector, so the
+     differing native sizes - Apple 156x40, Microsoft 161x44 - do not matter. */
   .badge img { height: 48px; width: auto; display: block; }
+  /* Wraps rather than shrinks on a narrow screen: neither vendor allows their
+     badge to be redrawn smaller than their minimum to make a row fit. */
+  .badges {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 14px;
+  }
   .meta { color: var(--ink-soft); font-size: 0.9rem; margin-top: 12px; }
   .panel {
     background: var(--panel);
@@ -161,13 +179,25 @@
   <h1>Photonkeeper</h1>
   <p class="tagline">Gets imaging sessions off a DWARF&nbsp;3 or DWARF&nbsp;Mini and into a proper archive on your own drive — and puts them back <strong>byte for byte identical</strong>, so the telescope can still megastack and restack them.</p>
   <div class="cta">
-    <a class="badge" href="https://apps.apple.com/app/photonkeeper/id6799277298">
-      <picture>
-        <source media="(prefers-color-scheme: light)" srcset="badge/mac-app-store-en-black.svg">
-        <img src="badge/mac-app-store-en-white.svg" alt="Download on the Mac App Store" width="156" height="40">
-      </picture>
-    </a>
-    <div class="meta">Version 1.10 · macOS 14 or later</div>
+    <div class="badges">
+      <a class="badge" href="https://apps.apple.com/app/photonkeeper/id6799277298">
+        <picture>
+          <source media="(prefers-color-scheme: light)" srcset="badge/mac-app-store-en-black.svg">
+          <img src="badge/mac-app-store-en-white.svg" alt="Download on the Mac App Store" width="156" height="40">
+        </picture>
+      </a>
+      <!-- Apple names its lockups by their ink (black on a light page, white on
+           a dark one); Microsoft names its by the page they sit on (light,
+           dark). Same idea, opposite words, which is why the two <source>
+           lines below look inverted and are not. -->
+      <a class="badge" href="https://apps.microsoft.com/detail/9NM0K9T75QMZ">
+        <picture>
+          <source media="(prefers-color-scheme: light)" srcset="badge/microsoft-store-en-light.svg">
+          <img src="badge/microsoft-store-en-dark.svg" alt="Download from the Microsoft Store" width="161" height="44">
+        </picture>
+      </a>
+    </div>
+    <div class="meta">macOS 14 or later · Windows 10 (1809) or later</div>
   </div>
 </header>
 
@@ -183,14 +213,14 @@
   <li>Files <code>M 42</code>, <code>M42</code> and <code>NGC 1976</code> as one target instead of three folders.</li>
   <li>Re-checks the whole archive for bit-rot later, remembers what it found, and can fetch damaged files back off the telescope.</li>
   <li>Imports a whole card, or just the sessions you pick out of the list.</li>
-  <li>Removes sessions from the archive when you ask — to the Trash, never straight out.</li>
+  <li>Removes sessions from the archive when you ask — to the Trash or the Recycle Bin, never straight out.</li>
   <li>Every operation has a dry run that shows exactly what would happen first.</li>
 </ul>
 
 <p>Session folders are never renamed and nothing inside one is ever altered — all the organising happens in the directories above them.</p>
 
 <h2>Try it without a telescope</h2>
-<p>There's a demo mode with sample data and a separate sample archive, so you can watch the whole round trip work before pointing it anywhere near your own sessions. Telescope → Try Demo Mode.</p>
+<p>The Mac app has a demo mode with sample data and a separate sample archive, so you can watch the whole round trip work before pointing it anywhere near your own sessions. Telescope → Try Demo Mode. The Windows app doesn't have it yet.</p>
 
 <h2>Screenshots</h2>
 
@@ -211,15 +241,16 @@
 
 <h2>Requirements</h2>
 <ul>
-  <li>macOS 14 (Sonoma) or later, Apple silicon or Intel.</li>
+  <li>macOS 14 (Sonoma) or later, Apple silicon or Intel — or Windows 10 version 1809 or later, x64 or ARM64.</li>
   <li>A DWARF 3 or DWARF Mini, connected over USB.</li>
   <li>Somewhere to keep the archive — an external drive is fine, and it's remembered even if you move or rename the folder.</li>
 </ul>
+<p>The two are the same app and the same archive format: a drive written by one is read by the other, checksums and all. The Windows app is in English only, and has no demo mode.</p>
 
 <h2 id="privacy">Privacy</h2>
 <p>Photonkeeper collects nothing about you. There is no analytics, no telemetry, no crash reporting, no account to make, no licence to check and no tracking of any kind, and no third-party code in the app at all. Nobody, me included, learns what you photograph or when.</p>
 
-<p>Your archive, its manifests and checksums, and a handful of small settings all stay on your Mac. The App Store version makes exactly one kind of network connection — to your own telescope, on your own network — and the version check is compiled out of it entirely. Copies downloaded from this page before Photonkeeper moved to the App Store add that one check, once a day, and it can be turned off.</p>
+<p>Your archive, its manifests and checksums, and a handful of small settings all stay on your own machine. The Mac App Store and Microsoft Store versions make exactly one kind of network connection — to your own telescope, on your own network. The Mac App Store build has the version check compiled out of it; the Windows build never had one written, because the Store handles updates. Copies downloaded from this page before Photonkeeper moved to the App Store add that one check, once a day, and it can be turned off.</p>
 
 <p><a href="/privacy/">Read the full privacy policy</a>, which spells out every connection the app makes, exactly where your data lives, and what happens if you email me.</p>
 

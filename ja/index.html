@@ -4,21 +4,21 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Photonkeeper — DWARF 3 と Mini の撮影セッションを、1バイトも違わずアーカイブ</title>
-<meta name="description" content="DWARF 3 や DWARF Mini の撮影セッションをチェックサム付きのアーカイブへ取り込み、バイト単位で同一のまま書き戻せる macOS アプリ。望遠鏡側のメガスタックもそのまま使えます。">
+<meta name="description" content="DWARF 3 や DWARF Mini の撮影セッションをチェックサム付きのアーカイブへ取り込み、バイト単位で同一のまま書き戻せる macOS / Windows アプリ。望遠鏡側のメガスタックもそのまま使えます。">
 <link rel="canonical" href="https://photonkeeper.chryse.co.uk/ja/">
 <link rel="alternate" hreflang="en" href="https://photonkeeper.chryse.co.uk/">
 <link rel="alternate" hreflang="ja" href="https://photonkeeper.chryse.co.uk/ja/">
 <link rel="alternate" hreflang="zh-Hans" href="https://photonkeeper.chryse.co.uk/zh-Hans/">
 <link rel="alternate" hreflang="x-default" href="https://photonkeeper.chryse.co.uk/">
 <meta property="og:title" content="Photonkeeper — DWARF 3 と Mini の撮影セッションを、1バイトも違わずアーカイブ">
-<meta property="og:description" content="DWARF 3 と DWARF Mini の撮影セッションを macOS で取り込み、検証し、書き戻す。すべてのファイルにチェックサムを付け、実行前には必ずドライランを。">
+<meta property="og:description" content="DWARF 3 と DWARF Mini の撮影セッションを macOS と Windows で取り込み、検証し、書き戻す。すべてのファイルにチェックサムを付け、実行前には必ずドライランを。">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://photonkeeper.chryse.co.uk/ja/">
 <meta property="og:locale" content="ja_JP">
 <meta property="og:image" content="https://photonkeeper.chryse.co.uk/shots/sessions.png">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Photonkeeper — DWARF 3 と Mini の撮影セッションを、1バイトも違わずアーカイブ">
-<meta name="twitter:description" content="DWARF 3 と DWARF Mini の撮影セッションを macOS で取り込み、検証し、書き戻す。すべてのファイルにチェックサム付き。">
+<meta name="twitter:description" content="DWARF 3 と DWARF Mini の撮影セッションを macOS と Windows で取り込み、検証し、書き戻す。すべてのファイルにチェックサム付き。">
 <meta name="twitter:image" content="https://photonkeeper.chryse.co.uk/shots/sessions.png">
 <script type="application/ld+json">
 {
@@ -26,12 +26,17 @@
   "@type": "SoftwareApplication",
   "name": "Photonkeeper",
   "url": "https://photonkeeper.chryse.co.uk/ja/",
-  "installUrl": "https://apps.apple.com/app/photonkeeper/id6799277298",
+  "installUrl": [
+    "https://apps.apple.com/app/photonkeeper/id6799277298",
+    "https://apps.microsoft.com/detail/9NM0K9T75QMZ"
+  ],
   "inLanguage": "ja",
-  "description": "DWARF 3 / DWARF Mini スマート望遠鏡とローカルアーカイブの間で、撮影セッションをバイト単位で同一のまま移動させる macOS アプリ。SHA-256 で検証します。",
+  "description": "DWARF 3 / DWARF Mini スマート望遠鏡とローカルアーカイブの間で、撮影セッションをバイト単位で同一のまま移動させる macOS / Windows アプリ。SHA-256 で検証します。",
   "applicationCategory": "UtilitiesApplication",
-  "operatingSystem": "macOS 14 以降",
-  "softwareVersion": "1.10"
+  "operatingSystem": [
+    "macOS 14 以降",
+    "Windows 10 バージョン 1809 以降"
+  ]
 }
 </script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -98,7 +103,20 @@
      CSS: the artwork itself changes, not its styling. 48px clears Apple's
      40px minimum for the web. */
   .badge { display: inline-block; }
+  /* One height for both, since two badges of different provenance sitting at
+     different sizes reads as a mistake. 48px clears Apple's 40px minimum for
+     the web and Microsoft's own guidance, and the artwork is vector, so the
+     differing native sizes - Apple 140x40, Microsoft 161x44 - do not matter. */
   .badge img { height: 48px; width: auto; display: block; }
+  /* Wraps rather than shrinks on a narrow screen: neither vendor allows their
+     badge to be redrawn smaller than their minimum to make a row fit. */
+  .badges {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 14px;
+  }
   .meta { color: var(--ink-soft); font-size: 0.9rem; margin-top: 12px; }
   .panel {
     background: var(--panel);
@@ -166,13 +184,25 @@
   <h1>Photonkeeper</h1>
   <p class="tagline">DWARF&nbsp;3 や DWARF&nbsp;Mini の撮影セッションを、手元のドライブ上のきちんとしたアーカイブへ。書き戻すときは<strong>1バイトも違わない状態</strong>で戻すので、望遠鏡側のメガスタックや再スタックもそのまま使えます。</p>
   <div class="cta">
-    <a class="badge" href="https://apps.apple.com/app/photonkeeper/id6799277298">
-      <picture>
-        <source media="(prefers-color-scheme: light)" srcset="/badge/mac-app-store-ja-black.svg">
-        <img src="/badge/mac-app-store-ja-white.svg" alt="Mac App Store からダウンロード" width="140" height="40">
-      </picture>
-    </a>
-    <div class="meta">バージョン 1.10 · macOS 14 以降</div>
+    <div class="badges">
+      <a class="badge" href="https://apps.apple.com/app/photonkeeper/id6799277298">
+        <picture>
+          <source media="(prefers-color-scheme: light)" srcset="/badge/mac-app-store-ja-black.svg">
+          <img src="/badge/mac-app-store-ja-white.svg" alt="Mac App Store からダウンロード" width="140" height="40">
+        </picture>
+      </a>
+      <!-- Apple names its lockups by their ink (black on a light page, white on
+           a dark one); Microsoft names its by the page they sit on (light,
+           dark). Same idea, opposite words, which is why the two <source>
+           lines below look inverted and are not. -->
+      <a class="badge" href="https://apps.microsoft.com/detail/9NM0K9T75QMZ">
+        <picture>
+          <source media="(prefers-color-scheme: light)" srcset="/badge/microsoft-store-ja-light.svg">
+          <img src="/badge/microsoft-store-ja-dark.svg" alt="Microsoft Store からダウンロード" width="161" height="44">
+        </picture>
+      </a>
+    </div>
+    <div class="meta">macOS 14 以降 · Windows 10 (1809) 以降</div>
   </div>
 </header>
 
@@ -188,14 +218,14 @@
   <li><code>M 42</code>・<code>M42</code>・<code>NGC 1976</code> を3つのフォルダに分けず、1つのターゲットとして扱います。</li>
   <li>後日アーカイブ全体を再検査してビットロットを調べ、結果を記録し、破損したファイルを望遠鏡から取り直せます。</li>
   <li>カード全体を読み込むことも、一覧から選んだセッションだけを読み込むこともできます。</li>
-  <li>指示があればアーカイブからセッションを削除します。直接消さず、必ずゴミ箱を経由します。</li>
+  <li>指示があればアーカイブからセッションを削除します。直接消さず、必ずゴミ箱（Windows では「ごみ箱」）を経由します。</li>
   <li>すべての操作にドライランがあり、何が起きるかを実行前に正確に確認できます。</li>
 </ul>
 
 <p>セッションフォルダの名前が変わることはなく、中身に手が入ることもありません。整理はすべて、その上位のディレクトリで行われます。</p>
 
 <h2>望遠鏡がなくても試せます</h2>
-<p>サンプルデータと専用のサンプルアーカイブを使うデモモードがあります。自分の撮影データに触れる前に、往復の流れをひととおり確認できます。メニューの「望遠鏡 → デモモードを試す」から。</p>
+<p>Mac 版には、サンプルデータと専用のサンプルアーカイブを使うデモモードがあります。自分の撮影データに触れる前に、往復の流れをひととおり確認できます。メニューの「望遠鏡 → デモモードを試す」から。Windows 版にはまだありません。</p>
 
 <h2>スクリーンショット</h2>
 
@@ -216,15 +246,16 @@
 
 <h2>動作環境</h2>
 <ul>
-  <li>macOS 14 (Sonoma) 以降。Apple シリコン、Intel のどちらでも動きます。</li>
+  <li>macOS 14 (Sonoma) 以降（Apple シリコン / Intel）、または Windows 10 バージョン 1809 以降（x64 / ARM64）。</li>
   <li>USB 接続の DWARF 3 または DWARF Mini。</li>
   <li>アーカイブを置く場所。外付けドライブでも構いませんし、フォルダを移動したり名前を変えたりしても記憶されます。</li>
 </ul>
+<p>Mac 版と Windows 版は同じアプリで、アーカイブの形式も同じです。一方で書いたドライブを、チェックサムも含めてもう一方がそのまま読めます。なお Windows 版は英語表示のみで、デモモードはまだありません。</p>
 
 <h2 id="privacy">プライバシー</h2>
 <p>Photonkeeper はあなたに関する情報を一切収集しません。アナリティクスもテレメトリもクラッシュレポートもなく、作るアカウントも、確認するライセンスもなく、いかなる追跡も行いません。サードパーティ製のコードはアプリ内に1行も入っていません。あなたが何をいつ撮影したかを知る人は、開発者を含めて誰もいません。</p>
 
-<p>アーカイブも、そのマニフェストとチェックサムも、いくつかの小さな設定も、すべてあなたの Mac の中に留まります。App Store 版が行うネットワーク接続は1種類だけ — あなた自身のネットワーク上の、あなた自身の望遠鏡へのものです。バージョン確認はこのビルドからコンパイル時に完全に取り除かれています。Photonkeeper が App Store へ移る前にこのページからダウンロードされた版には、そのバージョン確認が1日1回だけ加わりますが、オフにできます。</p>
+<p>アーカイブも、そのマニフェストとチェックサムも、いくつかの小さな設定も、すべてお使いのマシンの中に留まります。App Store 版と Microsoft Store 版が行うネットワーク接続は1種類だけ — あなた自身のネットワーク上の、あなた自身の望遠鏡へのものです。バージョン確認は、Mac App Store 版ではコンパイル時に完全に取り除かれており、Windows 版にはそもそも書かれていません（更新は Store が扱うためです）。Photonkeeper が App Store へ移る前にこのページからダウンロードされた版には、そのバージョン確認が1日1回だけ加わりますが、オフにできます。</p>
 
 <p><a href="/ja/privacy/">プライバシーポリシー全文</a>では、アプリが行うすべての接続、データが実際にどこに置かれるか、メールをいただいた場合にどうなるかを詳しく説明しています。</p>
 
