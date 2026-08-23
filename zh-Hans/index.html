@@ -207,18 +207,20 @@
 </header>
 
 <div class="note">
-  <strong>支持 DWARF&nbsp;3 与 DWARF&nbsp;Mini。</strong>两者都用真实数据验证过：DWARF&nbsp;3 由我本人测试，Mini 由一位机主完整跑过一遍来回流程。如果你的设备表现不对，或者哪里让你困惑，请告诉我：<a href="mailto:support@chryse.co.uk">support@chryse.co.uk</a>，欢迎附上截图。
+  <strong>支持 DWARF&nbsp;3 与 DWARF&nbsp;Mini。</strong>两者都用真实数据验证过：DWARF&nbsp;3 由我本人测试，Mini 由一位机主完整跑过一遍来回流程。DWARF&nbsp;II 的存档也能读取 — 用“存档”→“从现有文件夹导入…”归入即可。我手上从未有过 DWARF&nbsp;II 实机，所以直接从它导入、或把拍摄记录发送回它，都属于未经测试，而不是确定不行。如果你的设备表现不对，或者哪里让你困惑，请告诉我：<a href="mailto:support@chryse.co.uk">support@chryse.co.uk</a>，欢迎附上截图。
 </div>
 
 <h2>它做什么</h2>
 <ul>
   <li>把望远镜上所有新数据导入进来，并在复制的<em>同时</em>计算每个文件的 SHA-256 校验和，而不是复制完再单独跑一遍。</li>
+  <li>既可以走数据线，也可以走你自己的 Wi-Fi 网络（“望远镜”→“通过 Wi-Fi 连接…”）。Wi-Fi 下可以导入和校验；发送回望远镜和释放机身空间需要 USB。</li>
   <li>把拍摄记录发送回望远镜 — 可按目标、日期、曝光或增益筛选 — 传出时计算哈希，写完后再读回确认。</li>
   <li>释放机身存储空间，但只针对那些刚刚与你的存档核对并校验通过的拍摄记录。</li>
   <li>把 <code>M 42</code>、<code>M42</code> 和 <code>NGC 1976</code> 归为同一个目标，而不是三个文件夹。</li>
   <li>日后可重新检查整个存档是否出现位腐，记住检查结果，并能从望远镜上重新取回损坏的文件。</li>
+  <li>也回答问题的另一半 — 不只是文件自导入以来有没有变过，而是它现在还能不能作为一帧正常打开。</li>
   <li>可以导入整张卡，也可以只导入你从列表里挑出的那几条拍摄记录。</li>
-  <li>你要求时才从存档中删除拍摄记录 — 而且是移入废纸篓（Windows 上是回收站），绝不直接抹掉。</li>
+  <li>你要求时才从存档中删除拍摄记录 — 而且是移入废纸篓（Windows 上是回收站），绝不直接抹掉；在没有废纸篓的网络驱动器上，则移入存档内的暂存文件夹。</li>
   <li>每一项操作都可以先试运行，准确显示接下来会发生什么。</li>
 </ul>
 
@@ -247,7 +249,7 @@
 <h2>系统要求</h2>
 <ul>
   <li>macOS 14 (Sonoma) 或更高版本（Apple 芯片或 Intel 均可），或 Windows 10 版本 1809 或更高版本（x64 或 ARM64）。</li>
-  <li>一台通过 USB 连接的 DWARF 3 或 DWARF Mini。</li>
+  <li>一台 DWARF 3 或 DWARF Mini。全部功能需要通过 USB 连接；若只是导入和校验，走 Wi-Fi 也可以。</li>
   <li>一个存放存档的位置 — 外置硬盘也可以，而且即使你移动或重命名该文件夹，应用也会记住它。</li>
 </ul>
 <p>两边是同一个应用，存档格式也相同：一边写出的硬盘，另一边可以照常读取，连校验和一起。需要注意的是，Windows 版目前只有英文界面，也还没有演示模式。</p>
@@ -260,7 +262,7 @@
 <p><a href="/zh-Hans/privacy/">阅读完整隐私政策</a>，其中逐条说明应用发起的每一个连接、你的数据究竟存放在哪里，以及你给我发邮件后会发生什么。</p>
 
 <h2>联系方式</h2>
-<p>缺陷、困惑或功能建议请发到 <a href="mailto:support@chryse.co.uk">support@chryse.co.uk</a>。如果出了问题，应用内的"活动"面板里有日志 — 那一屏的截图是你能提供的最有用的东西。</p>
+<p>缺陷、困惑或功能建议请发到 <a href="mailto:support@chryse.co.uk">support@chryse.co.uk</a>。如果出了问题，应用内“活动”面板的“日志”会留下记录，每次运行也会在存档中写一份。用“日志”里的“存储…”导出的文件，或者 <code>_journal/logs/</code> 里最新的那一个，是你能提供的最有用的东西。</p>
 
 <footer>
   <p><a href="/zh-Hans/privacy/">隐私</a> · <a href="mailto:support@chryse.co.uk">support@chryse.co.uk</a></p>

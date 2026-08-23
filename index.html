@@ -202,18 +202,20 @@
 </header>
 
 <div class="note">
-  <strong>Works with the DWARF&nbsp;3 and the DWARF&nbsp;Mini.</strong> Both have been run against real data — the DWARF&nbsp;3 by me, the Mini by an owner who put the whole round trip through it. If yours doesn't behave, or anything about it confuses you, tell me at <a href="mailto:support@chryse.co.uk">support@chryse.co.uk</a> — screenshots welcome.
+  <strong>Works with the DWARF&nbsp;3 and the DWARF&nbsp;Mini.</strong> Both have been run against real data — the DWARF&nbsp;3 by me, the Mini by an owner who put the whole round trip through it. A DWARF&nbsp;II's own archive reads too — file it in with Archive → Import from an Existing Folder. I've never had a II in front of me, so importing straight off one, or sending sessions back to it, is untested rather than ruled out. If yours doesn't behave, or anything about it confuses you, tell me at <a href="mailto:support@chryse.co.uk">support@chryse.co.uk</a> — screenshots welcome.
 </div>
 
 <h2>What it does</h2>
 <ul>
   <li>Imports everything new off the telescope, SHA-256 checksumming each file <em>as</em> it copies rather than in a second pass.</li>
+  <li>Works over the cable or over your own Wi-Fi network — Telescope → Connect over Wi-Fi. Wi-Fi imports and verifies; sending sessions back and freeing the card need USB.</li>
   <li>Sends sessions back to the scope — filtered by target, date, exposure or gain — hashing on the way out and reading back to confirm.</li>
   <li>Frees onboard storage, but only for sessions it has just verified against your archive.</li>
   <li>Files <code>M 42</code>, <code>M42</code> and <code>NGC 1976</code> as one target instead of three folders.</li>
   <li>Re-checks the whole archive for bit-rot later, remembers what it found, and can fetch damaged files back off the telescope.</li>
+  <li>Asks the other half of that question too — not just whether a frame has changed since it was imported, but whether it still opens as a frame at all.</li>
   <li>Imports a whole card, or just the sessions you pick out of the list.</li>
-  <li>Removes sessions from the archive when you ask — to the Trash or the Recycle Bin, never straight out.</li>
+  <li>Removes sessions from the archive when you ask — to the Trash or the Recycle Bin, never straight out, and to a holding folder inside the archive on network drives, which have no Trash of their own.</li>
   <li>Every operation has a dry run that shows exactly what would happen first.</li>
 </ul>
 
@@ -242,7 +244,7 @@
 <h2>Requirements</h2>
 <ul>
   <li>macOS 14 (Sonoma) or later, Apple silicon or Intel — or Windows 10 version 1809 or later, x64 or ARM64.</li>
-  <li>A DWARF 3 or DWARF Mini, connected over USB.</li>
+  <li>A DWARF 3 or DWARF Mini. Over USB for everything; over your own Wi-Fi network for importing and verifying.</li>
   <li>Somewhere to keep the archive — an external drive is fine, and it's remembered even if you move or rename the folder.</li>
 </ul>
 <p>The two are the same app and the same archive format: a drive written by one is read by the other, checksums and all. The Windows app is in English only, and has no demo mode.</p>
@@ -255,7 +257,7 @@
 <p><a href="/privacy/">Read the full privacy policy</a>, which spells out every connection the app makes, exactly where your data lives, and what happens if you email me.</p>
 
 <h2>Get in touch</h2>
-<p>Bugs, confusion or feature requests: <a href="mailto:support@chryse.co.uk">support@chryse.co.uk</a>. If something went wrong, the Activity pane inside the app has a log — a screenshot of that is the single most useful thing you can send.</p>
+<p>Bugs, confusion or feature requests: <a href="mailto:support@chryse.co.uk">support@chryse.co.uk</a>. If something went wrong, the Activity pane's Log keeps one, and every run writes one into your archive as well — Save… from the Log, or the newest file in <code>_journal/logs/</code>, is the single most useful thing you can send.</p>
 
 <footer>
   <p><a href="/privacy/">Privacy</a> · <a href="mailto:support@chryse.co.uk">support@chryse.co.uk</a></p>
